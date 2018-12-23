@@ -1,4 +1,6 @@
-/* Pour pouvoir utiliser une hauteur (height) ou une hauteur minimale
+/* 
+   Style CSS simple
+   Pour pouvoir utiliser une hauteur (height) ou une hauteur minimale
    (min-height) sur un bloc, il faut que son parent direct ait lui-même une
    hauteur déterminée (donc toute valeur de height sauf "auto": hauteur en
    pixels, em, autres unités...).

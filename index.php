@@ -1,3 +1,5 @@
+<!-- Page index simple en HTML -->
+
 <!doctype html>
 <html lang="fr">
 <head>
