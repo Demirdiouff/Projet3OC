@@ -1,14 +1,15 @@
-<?php $titre = 'Mon Blog'; ?>
+<?php 
 
-<?php foreach ($billets as $billet): ?>
-  <article>
-    <header>
-      <a href="<?= "index.php?action=billet&id=" . $billet['id'] ?>">
-      	<h1 class="titreBillet"><?= $billet['titre'] ?></h1>
-      </a>
-      <time><?= $billet['date'] ?></time>
-    </header>
-    <p><?= $billet['contenu'] ?></p>
-  </article>
-  <hr />
-<?php endforeach; ?>
+//------------- Vue (affichage à l'utilisateur, renvoi à template.php) ----------------//
+
+?>
+
+<div class="inner cover">
+	<h1 class="cover-heading">Jean Forteroche</h1>
+	<p class="lead">Un billet simple pour l'Alaska est un roman qui sera
+		écrit entièrement en ligne via le biais de ce site web. Un chapitre
+		sera publié chaque semaine. N'hésitez pas à donner vos retours.</p>
+	<p class="lead">
+		<a href="index.php?action=apropos" class="btn btn-lg btn-default">En savoir plus</a>
+	</p>
+</div>
