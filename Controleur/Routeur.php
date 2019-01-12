@@ -1,6 +1,7 @@
 <?php
 require_once 'Controleur/ControleurAccueil.php';
 require_once 'Controleur/ControleurBillet.php';
+require_once 'Controleur/ControleurRoman.php';
 require_once 'Vue/Vue.php';
 
 class Routeur
@@ -9,33 +10,34 @@ class Routeur
     private $ctrlAccueil;
 
     private $ctrlBillet;
+    
+    private $ctrlRoman;
 
     public function __construct()
     {
-        $this->ctrlAccueil = new ControleurAccueil();
-        $this->ctrlBillet = new ControleurBillet();
+        
     }
 
     // Traite une requête entrante
     public function routerRequete()
     {
         try {
+            $action = 'accueil';
             if (isset($_GET['action'])) {
-                if ($_GET['action'] == 'billet') {
-                    $idBillet = intval($this->getParametre($_GET, 'id'));
-                    if ($idBillet != 0) {
-                        $this->ctrlBillet->billet($idBillet);
-                    } else
-                        throw new Exception("Identifiant de billet non valide");
-                } else if ($_GET['action'] == 'commenter') {
-                    $auteur = $this->getParametre($_POST, 'auteur');
-                    $contenu = $this->getParametre($_POST, 'contenu');
-                    $idBillet = $this->getParametre($_POST, 'id');
-                    $this->ctrlBillet->commenter($auteur, $contenu, $idBillet);
-                } else
+                $action = $_GET['action'];
+            }
+            switch ($action) {
+                case 'accueil':
+                    $this->ctrlAccueil = new ControleurAccueil();
+                    $this->ctrlAccueil->accueil();
+                    break;
+                case 'roman':
+                    $this->ctrlRoman = new ControleurRoman();
+                    $this->ctrlRoman->roman();
+                    break;
+                // faire quelque chose
+                default:
                     throw new Exception("Action non valide");
-            } else { // Aucune action définie : affichage de l'accueil
-                $this->ctrlAccueil->accueil();
             }
         } catch (Exception $e) {
             $this->erreur($e->getMessage());
