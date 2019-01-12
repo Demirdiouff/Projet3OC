@@ -58,7 +58,7 @@
 
           <div class="mastfoot">
             <div class="inner">
-              <p><a href="adminPage.php">Espace d'administration</a></p>
+              <p><a href="index.php?action=adminPage">Espace d'administration</a></p>
             </div>
           </div>
 
