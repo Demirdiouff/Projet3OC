@@ -46,7 +46,7 @@
               <nav>
                 <ul class="nav masthead-nav">
                   <li class="active"><a href="index.php">Accueil</a></li>
-                  <li><a href="index.php?action=apropos">A propos</a></li>
+                  <li><a href="index.php?action=propos">A propos</a></li>
                   <li><a href="index.php?action=roman">Roman</a></li>
                   <li><a href="index.php?action=contact">Contact</a></li>
                 </ul>
@@ -58,7 +58,7 @@
 
           <div class="mastfoot">
             <div class="inner">
-              <p><a href="index.php?action=adminPage">Espace d'administration</a></p>
+              <p><a href="index.php?action=espaceAdmin">Espace d'administration</a></p>
             </div>
           </div>
 
