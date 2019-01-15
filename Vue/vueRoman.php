@@ -4,7 +4,7 @@
 foreach ($billets as $billet): ?>
 	<article>
 		<header>
-			<a href="<?= "index.php?action=commentRoman&id=" . $billet['id'] ?>">
+			<a href="<?= "index.php?action=billetRoman&id=" . $billet['id'] ?>">
 				<h1 class="titreBillet"><?= $billet ['titre'] ?></h1>
 			</a>
 			<time><?= $billet['date'] ?></time>
