@@ -1,11 +1,13 @@
 <div class="">
-	<h1>Jean Forteroche</h1>
 	<p class="">Un simple écrivain qui veut faire les choses autrement.</p>
 	<p>
-		<a class="" href="index.php?action=roman" role="">Suivre
-			mes réalisations</a>
+		<strong><h3><a class="" href="index.php?action=roman" role="">Suivre
+			mes réalisations</a></h3></strong>
 	</p>
 </div>
+
+<br />
+<br />
 
 <div class="">
 	<div class="">
