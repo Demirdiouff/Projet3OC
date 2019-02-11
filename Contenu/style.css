@@ -19,6 +19,30 @@ a:hover {
   border: 1px solid #fff;
 }
 
+input#bouton-default {
+    color: black;
+}
+
+textarea#txtCommentaire {
+    color: black;
+}
+
+input#txt {
+    color: blue;
+}
+
+hr#hr-foreach {
+    width: 75px;
+}
+
+p#txt {
+    color: deepskyblue;
+}
+
+p#txtCommentaire {
+    color: lemonchiffon;
+}
+
 
 /*
  * Base structure
@@ -160,6 +184,6 @@ body {
   .masthead,
   .mastfoot,
   .cover-container {
-    width: 700px;
+    width: 1200px;
   }
 }
