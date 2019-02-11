@@ -5,8 +5,10 @@
 <p> Contactez moi ! </p>
 
 <form method="post">
-	<input id="" name="" type="text" placeholder="Nom" />
-	<input id="" name="" type="text" placeholder="Prenom" />
-	<input type="textarea" placeholder="Ecrivez ce que vous souhaitez" size="100px" />
-	<input type="submit" value="Envoyer !" />
+	<input id="txt" name="" type="text" placeholder="Nom" />
+	<input id="txt" name="" type="text" placeholder="Prenom" />
+	<br /><br />
+	<textarea id="txtCommentaire" name="" placeholder="Ecrivez ce que vous voulez!" rows="4"></textarea>
+	<br />
+	<input id="bouton-default" type="submit" value="Envoyer !" />
 </form>
