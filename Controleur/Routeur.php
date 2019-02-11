@@ -5,6 +5,7 @@ require_once 'Controleur/ControleurRoman.php';
 require_once 'Controleur/ControleurBillet.php';
 require_once 'Controleur/ControleurContact.php';
 require_once 'Controleur/ControleurEspaceAdmin.php';
+require_once 'Framework/Debug.php';
 require_once 'Vue/Vue.php';
 
 class Routeur
@@ -23,6 +24,10 @@ class Routeur
     private $ctrlContact;
     
     private $ctrlEspaceAdmin;
+    
+    private $ctrlInscription;
+    
+    private $ctrlConnexion;
 
     public function __construct()
     {
@@ -71,6 +76,17 @@ class Routeur
                 case 'espaceAdmin':
                     $this->ctrlEspaceAdmin = new ControleurEspaceAdmin();
                     $this->ctrlEspaceAdmin->espaceAdmin();
+                    break;
+                case 'inscription':
+                    $this->ctrlInscription = new ControleurEspaceAdmin();
+                    $pseudo = $this->getParametre($_POST, 'pseudo');
+                    $motDePasse = $this->getParametre($_POST, 'motDePasse');
+                    $this->ctrlInscription->inscription($pseudo, $motDePasse);
+                    break;
+                case 'connexion':
+                    $this->ctrlConnexion = new ControleurEspaceAdmin();
+                    $pseudo = $this->getParametre($_POST, 'pseudo');
+                    $this->ctrlConnexion->connexion($pseudo);
                     break;
                 // faire quelque chose
                 default:
