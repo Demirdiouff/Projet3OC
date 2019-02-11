@@ -9,16 +9,14 @@ class Commentaire extends Modele
     public function getCommentaires($idBillet)
     {
         $bdd = $this->getBdd();
-        $commentaires = $bdd->prepare('select COM_ID as id, COM_DATE as date,' . ' COM_AUTEUR as auteur, COM_CONTENU as contenu from T_COMMENTAIRE' . ' where BIL_ID=?');
-        $commentaires->execute(array(
-            $idBillet
-        ));
+        $commentaires = $bdd->prepare('select id_commentaire as id, date_commentaire as date, auteur_commentaire as auteur, contenu_commentaire as contenu from commentaires where id_post=?');
+        $commentaires->execute(array($idBillet));
         return $commentaires;
     }
     
     // Ajoute un commentaire dans la base 
     public function ajouterCommentaire($auteur, $contenu, $idBillet) {
-        $sql = 'insert into T_COMMENTAIRE(COM_DATE, COM_AUTEUR, COM_CONTENU, BIL_ID)' . ' values(?, ?, ?, ?)';
+        $sql = 'insert into commentaires(date_commentaire, auteur_commentaire, contenu_commentaire, id_post) values(?, ?, ?, ?)';
         $date = date(DATE_W3C); // Récupère la date courante
         $this->executerRequete($sql, array($date, $auteur, $contenu, $idBillet));
     }
