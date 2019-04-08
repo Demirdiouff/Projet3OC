@@ -1,6 +1,7 @@
 <?php 
 
 //------------- Vue (affichage à l'utilisateur, renvoi à template.php) ----------------//
+$titre = 'Un billet pour l\'Alaska - ';
 
 ?>
 
