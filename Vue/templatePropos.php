@@ -8,7 +8,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 <link rel="icon" href="../../favicon.ico">
-<link rel="stylesheet" href="Contenu/style.css" />
+<link rel="stylesheet" href="Contenu/stylePropos.css" />
 <title><?= $titre; ?></title>
 <!--  $titre se trouve dans vueAccueil.php -->
 <!--  Elément spécifique -->
@@ -20,7 +20,7 @@
 	rel="stylesheet">
 
 <!-- Custom styles for this template -->
-<link href="Contenu/style.css" rel="stylesheet">
+<link href="Contenu/stylePropos.css" rel="stylesheet">
 
 <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
 <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -34,39 +34,27 @@
 </head>
 <body>
 	
-    <div class="site-wrapper">
 
-      <div class="site-wrapper-inner">
-
-        <div class="cover-container">
-
-          <div class="masthead clearfix">
-            <div class="inner">
-              <a href="index.php"><h3 class="masthead-brand">Un billet pour l'Alaska</h3></a>
-              <nav>
-                <ul class="nav masthead-nav">
-                  <li class="active"><a href="index.php">Accueil</a></li>
-                  <li><a href="index.php?action=propos">A propos</a></li>
-                  <li><a href="index.php?action=roman">Roman</a></li>
-                  <li><a href="index.php?action=contact">Contact</a></li>
-                </ul>
-              </nav>
-            </div>
-          </div>
+    <div class="container">
+      <div class="header clearfix">
+        <nav>
+          <ul class="nav nav-pills pull-right">
+            <li role="presentation"><a href="index.php">Accueil</a></li>
+            <li role="presentation" class="active"><a href="index.php?action=propos">A Propos</a></li>
+            <li role="presentation"><a href="index.php?action=roman">Roman</a></li>
+            <li role="presentation"><a href="index.php?action=contact">Contact</a></li>
+          </ul>
+        </nav>
+        <h3 class="text-muted"><a class="titrePage" href="index.php">Un billet pour l'Alaska</a></h3>
+      </div>
 
 		<?= $contenu; ?>
 
-          <div class="mastfoot">
-            <div class="inner">
-              <p><a href="index.php?action=pageConnexion">Espace d'administration</a></p>
-            </div>
-          </div>
+      <footer class="footer">
+        <p><a href="index.php?action=pageConnexion">Espace d'administration</a></p>
+      </footer>
 
         </div>
-
-      </div>
-
-    </div>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->

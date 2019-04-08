@@ -1,17 +1,20 @@
-<!doctype html>
+<?php
+
+?>
+
+<!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="utf-8" />
+<meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 <meta name="description" content="">
 <meta name="author" content="">
 <link rel="icon" href="../../favicon.ico">
-<link rel="stylesheet" href="Contenu/style.css" />
+
 <title><?= $titre; ?></title>
-<!--  $titre se trouve dans vueAccueil.php -->
-<!--  Elément spécifique -->
+
 <!-- Bootstrap core CSS -->
 <link href="Contenu/bootstrap-3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
 
@@ -20,7 +23,7 @@
 	rel="stylesheet">
 
 <!-- Custom styles for this template -->
-<link href="Contenu/style.css" rel="stylesheet">
+<link href="Contenu/styleRoman.css" rel="stylesheet">
 
 <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
 <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -32,41 +35,32 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
+
 <body>
+
+	<div class="container">
+		<div class="header clearfix">
+			<nav>
+				<ul class="nav nav-pills pull-right">
+					<li role="presentation"><a href="index.php">Accueil</a></li>
+					<li role="presentation"><a href="index.php?action=propos">A Propos</a></li>
+					<li role="presentation" class="active"><a href="index.php?action=roman">Roman</a></li>
+					<li role="presentation"><a href="index.php?action=contact">Contact</a></li>
+				</ul>
+			</nav>
+			<h3 class="text-muted"><a class="titrePage" href="index.php">Un billet pour l'Alaska</a></h3>
+		</div>
+	</div>
+	<!-- /container -->
 	
-    <div class="site-wrapper">
+	<?= $contenu; ?>
+	
+	<hr>
+	
+      <footer class="footer">
+        <p><a href="index.php?action=pageConnexion">Espace d'administration</a></p>
+      </footer> <!-- /container -->
 
-      <div class="site-wrapper-inner">
-
-        <div class="cover-container">
-
-          <div class="masthead clearfix">
-            <div class="inner">
-              <a href="index.php"><h3 class="masthead-brand">Un billet pour l'Alaska</h3></a>
-              <nav>
-                <ul class="nav masthead-nav">
-                  <li class="active"><a href="index.php">Accueil</a></li>
-                  <li><a href="index.php?action=propos">A propos</a></li>
-                  <li><a href="index.php?action=roman">Roman</a></li>
-                  <li><a href="index.php?action=contact">Contact</a></li>
-                </ul>
-              </nav>
-            </div>
-          </div>
-
-		<?= $contenu; ?>
-
-          <div class="mastfoot">
-            <div class="inner">
-              <p><a href="index.php?action=pageConnexion">Espace d'administration</a></p>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
@@ -76,5 +70,10 @@
     <script src="../../dist/js/bootstrap.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
-  </body>
+
+
+	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+	<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+</body>
 </html>
+
