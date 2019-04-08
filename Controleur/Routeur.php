@@ -2,8 +2,9 @@
 require_once 'Controleur/ControleurAccueil.php';
 require_once 'Controleur/ControleurPropos.php';
 require_once 'Controleur/ControleurRoman.php';
-require_once 'Controleur/ControleurBillet.php';
+require_once 'Controleur/ControleurPost.php';
 require_once 'Controleur/ControleurContact.php';
+require_once 'Controleur/ControleurPageConnexion.php';
 require_once 'Controleur/ControleurEspaceAdmin.php';
 require_once 'Framework/Debug.php';
 require_once 'Vue/Vue.php';
@@ -17,17 +18,23 @@ class Routeur
 
     private $ctrlRoman;
     
-    private $ctrlBillet;
+    private $ctrlPost;
     
     private $ctrlAjoutCommentaireBillet;
     
     private $ctrlContact;
     
-    private $ctrlEspaceAdmin;
+    private $ctrlPageConnexion;
+    
+    private $ctrlPageConnexionApresSubmit;
     
     private $ctrlInscription;
     
     private $ctrlConnexion;
+    
+    private $ctrlEspaceAdmin;
+    
+    private $ctrlSignalementCommentaire;
 
     public function __construct()
     {
@@ -50,43 +57,54 @@ class Routeur
                 case 'propos':
                     $this->ctrlPropos = new ControleurPropos();
                     $this->ctrlPropos->propos();
+                    break;
                 case 'roman':
                     $this->ctrlRoman = new ControleurRoman();
                     $this->ctrlRoman->roman();
                     break;
                 case 'billetRoman':
-                    $this->ctrlBillet = new ControleurBillet();
-                    $idBillet = -1;
-                    if (isset($_GET['id'])) {
-                        $idBillet = $_GET['id'];
-                    }
-                    $this->ctrlBillet->billet($idBillet);
+                    $this->ctrlBillet = new ControleurPost();
+                    $this->ctrlBillet->post();
                     break;
                 case 'commenter':
-                    $this->ctrlAjoutCommentaireBillet = new ControleurBillet();
-                    $auteur = $this->getParametre($_POST, 'auteur');
-                    $contenu = $this->getParametre($_POST, 'contenu');
-                    $idBillet = $this->getParametre($_POST, 'id');
-                    $this->ctrlAjoutCommentaireBillet->commenter($auteur, $contenu, $idBillet);
+                    $this->ctrlAjoutCommentaireBillet = new ControleurPost();
+                    $this->ctrlAjoutCommentaireBillet->commenter();
+//                     $auteur = $this->getParametre($_POST, 'auteur');
+//                     $contenu = $this->getParametre($_POST, 'contenu');
+//                     $idBillet = $this->getParametre($_POST, 'id');
+//                     $this->ctrlAjoutCommentaireBillet->commenter($auteur, $contenu, $idBillet);
                     break;
                 case 'contact':
                     $this->ctrlContact = new ControleurContact();
                     $this->ctrlContact->contact();
                     break;
+                case 'pageConnexion':
+                    $this->ctrlPageConnexion = new ControleurPageConnexion();
+                    $this->ctrlPageConnexion->pageConnexion();
+                    break;
+//                 case 'pageConnexionApresSubmit':
+//                     $this->ctrlPageConnexionApresSubmit = new ControleurPageConnexion();
+//                     $this->ctrlPageConnexionApresSubmit->pageConnexionApresSubmit();
+//                     break;
+                case 'inscription':
+                    $this->ctrlInscription = new ControleurPageConnexion();
+                    $this->ctrlInscription->inscription();
+//                     $this->ctrlInscription = new ControleurEspaceAdmin();
+//                     $pseudo = $this->getParametre($_POST, 'pseudo');
+//                     $motDePasse = $this->getParametre($_POST, 'motDePasse');
+//                     $this->ctrlInscription->inscription($pseudo, $motDePasse);
+                    break;
+                case 'connexion':
+                    $this->ctrlConnexion = new ControleurPageConnexion();
+                    $this->ctrlConnexion->connexion();
+                    break;
                 case 'espaceAdmin':
                     $this->ctrlEspaceAdmin = new ControleurEspaceAdmin();
                     $this->ctrlEspaceAdmin->espaceAdmin();
                     break;
-                case 'inscription':
-                    $this->ctrlInscription = new ControleurEspaceAdmin();
-                    $pseudo = $this->getParametre($_POST, 'pseudo');
-                    $motDePasse = $this->getParametre($_POST, 'motDePasse');
-                    $this->ctrlInscription->inscription($pseudo, $motDePasse);
-                    break;
-                case 'connexion':
-                    $this->ctrlConnexion = new ControleurEspaceAdmin();
-                    $pseudo = $this->getParametre($_POST, 'pseudo');
-                    $this->ctrlConnexion->connexion($pseudo);
+                case 'signalementCommentaire': 
+                    $this->ctrlSignalementCommentaire = new ControleurPost();
+                    $this->ctrlSignalementCommentaire->signalerCommentaire();
                     break;
                 // faire quelque chose
                 default:
@@ -109,7 +127,7 @@ class Routeur
     private function erreur($msgErreur)
     {
         $vue = new Vue("Erreurs");
-        $vue->generer(array(
+        $vue->genererPageErreurs(array(
             'msgErreur' => $msgErreur
         ));
     }
