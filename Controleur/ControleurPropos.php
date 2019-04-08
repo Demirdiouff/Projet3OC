@@ -10,7 +10,7 @@ class ControleurPropos {
     }
     
     public function propos() {
-        $vue = new Vue("Propos");
-        $vue->generer(array());
+        $vue = new Vue("Propos", "A Propos");
+        $vue->genererPagePropos(array());
     }
 }

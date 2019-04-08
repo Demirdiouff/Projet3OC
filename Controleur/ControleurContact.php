@@ -11,7 +11,7 @@ class ControleurContact {
     
     // Affiche la page contact
     public function contact() {
-        $vue = new Vue("Contact");
-        $vue->generer(array());
+        $vue = new Vue("Contact", "Contactez-moi");
+        $vue->genererPageContact(array());
     }
 }
