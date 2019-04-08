@@ -1,0 +1,25 @@
+/* Move down content because we have a fixed navbar that is 50px tall */
+body {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+h3.text-muted {
+    color: black;
+}
+.header h3 {
+    margin-top: 0;
+    margin-bottom: 0;
+    line-height: 40px;
+}
+.jumbotron {
+    margin-top: 20px;
+}
+footer.footer {
+    text-align: center;
+}
+a.titrePage {
+    text-decoration: none;
+}
+p.affichageDate {
+    font-size: 11px;
+}
