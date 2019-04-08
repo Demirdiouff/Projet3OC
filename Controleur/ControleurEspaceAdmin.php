@@ -1,37 +1,35 @@
 <?php
 
 require_once 'Modele/Modele.php';
-require_once 'Modele/Admin.php';
 require_once 'Vue/Vue.php';
 
 class ControleurEspaceAdmin {
     
-    private $identifiant;
+    private $postManager;
+    
+    private $commentaireManager;
     
     public function __construct() {
-        $this->identifiant = new Admin();
+        $this->postManager = new PostManager();
+        $this->commentaireManager = new CommentaireManager();
     }
     
+    // Affiche la liste de tous les billets du blog
     public function espaceAdmin() {
-        $vue = new Vue("espaceAdmin");
-        $vue->generer(array());
+//         if (isset($_REQUEST['idPost'])) {
+//             $idPost = $_REQUEST['idPost'];
+//         }
+        $posts = $this->postManager->getPosts();
+        $tableauNbCommentaire = $this->commentaireManager->getTableauNombreCommentaires();
+        $vue = new Vue("EspaceAdmin", "Page d'Administration - Accueil");
+        $vue->genererPageEspaceAdmin(array(
+            'posts' => $posts,
+            'tableauNbCommentaire' => $tableauNbCommentaire
+        ));
     }
     
-    public function inscription($pseudo, $motDePasse) {
-        if (isset($_POST['inscription']) && ($_POST['pseudo']) && ($_POST['motDePasse'])) {
-            $pseudo = $_POST['pseudo'];
-            $motDePasse = password_hash($_POST['motDePasse'], PASSWORD_DEFAULT);
-            $this->identifiant->ajoutIdentifiant($pseudo, $motDePasse);
-        }
-        $this->espaceAdmin();
-        //header('Location: http://localhost:8888/Projet3OC/index.php');
-    }
-    
-    public function connexion($pseudo, $motDePasse) {
-        if (isset($_POST['connexion']) && ($_POST['pseudo']) && $_POST['motDePasse']) {
-            $motDePasse = password_verify($_POST['motDePasse'], PASSWORD_DEFAULT);
-        $this->identifiant->verifIdentifiant($pseudo);
-        }
-        $this->espaceAdmin();
-    }
+//     public function nbCommentaires() {
+//         $this->commentaireManager->nombreCommentaires();
+//         $this->espaceAdmin();
+//     }
 }
