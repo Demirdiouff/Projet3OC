@@ -23,3 +23,6 @@ a.titrePage {
 p.affichageDate {
     font-size: 11px;
 }
+p.affichageNomSurPageRoman {
+    color: #777;
+}

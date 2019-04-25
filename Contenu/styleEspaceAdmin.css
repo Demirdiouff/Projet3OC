@@ -126,3 +126,13 @@ h2.sub-header {
     border-color: #d43f3a;
     float: right;
     margin-top: 10px;
+}
+.affichageNom {
+	color: white;
+}
+tr.couleurLigneTableau {
+	cursor:pointer;
+}
+tr.couleurLigneTableau:hover {
+	background-color: RGB(83,139,197) !important;
+}
