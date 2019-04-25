@@ -15,7 +15,7 @@
 				<input type="checkbox" value="remember-me">Se souvenir de moi
 				</label>
 			</div>
-			<input class="btn btn-lg btn-primary btn-block" type="submit" name="connexion" value="Se connecter" />
+			<a href="index.php?action=espaceAdmin"><input class="btn btn-lg btn-primary btn-block" type="submit" name="connexion" value="Se connecter" /></a>
 			<!-- <a href="landingAdminPage.php" class="btn btn-lg btn-primary btn-block" type="submit">Se connecter</a> -->
 			<p class="backlink">
 				<a href="index.php">Retour à l'accueil</a>

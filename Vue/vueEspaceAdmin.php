@@ -11,7 +11,7 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="index.php">Déconnexion</a></li>
+            <li><p class="affichageNom">Bienvenue <?= $_SESSION['nomUtilisateur'] ?> - <a href="index.php?action=deconnexion">Déconnexion</a></li>
           </ul>
         </div>
       </div>
@@ -21,16 +21,18 @@
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
-            <li class="active"><a href="landingAdminPage.php">Accueil <span class="sr-only">(current)</span></a></li>
-            <li><a href="formAddPost.php">Ajouter un article</a></li>
-            <li><a href="formModifyPost.php">Modifier un article</a></li>
-            <li><a href="formDeletePost.php">Supprimer un article</a></li>
+            <li class="active"><a href="index.php?action=espaceAdmin">Accueil <span class="sr-only">(current)</span></a></li>
+            <li><a href="index.php?action=pageAjoutRoman">Ajouter un article</a></li>
+            <li><a href="index.php?action=pageModifierRoman">Modifier un article</a></li>
+            <li><a href="index.php?action=pageSupprimerRoman">Supprimer un article</a></li>
           </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
           <h1 class="page-header">Page d'Administration</h1>
-			<br>
-          <h2 class="sub-header">Liste des articles publiés</h2>
+			<br/>
+		  <h2 class="sub-header">Vue globale</h2>
+		    <br/>
+          <h3 class="sub-header">Liste des articles publiés</h3>
           <div class="table-responsive">
             <table class="table table-striped">
               <thead>
@@ -44,13 +46,13 @@
               </thead>
               <?php foreach ($posts as $post): ?>
               <tbody>
-                <tr>
-                  <td><?= $post['id'] ?></td>
-                  <td>J. Forteroche</td>
-                  <td><?= $post['titre'] ?></td>
-                  <td><?= substr($post['contenu'], 0, 30) ?>...</td>
-                  <td><?php if (isset($tableauNbCommentaire[$post['id']])) {
-                        echo $tableauNbCommentaire[$post['id']];
+                <tr class="couleurLigneTableau" onclick="document.location='index.php?'">
+                  <td><?= $post->id() ?></td>
+                  <td><?= $post->auteurPost() ?></td>
+                  <td><?= $post->titrePost() ?></td>
+                  <td><?= substr($post->contenuPost(), 0, 30) ?>...</td>
+                  <td><?php if (isset($tableauNbCommentaire[$post->id()])) {
+                        echo $tableauNbCommentaire[$post->id()];
                         } else {
                         echo '0';
                         }?></td>

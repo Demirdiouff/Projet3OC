@@ -1,5 +1,4 @@
-<?php if (false) $post = new Post();
-?>
+<?php if (false) $post = new Post(); ?>
 <?php if (false) $commentaires = new Commentaire(); ?>
 <div class="container">
 	<div class="blog-header">
@@ -30,13 +29,19 @@
             
 		  <?php endforeach; ?>
 		  
+		  <?php if (isset($_SESSION['nomUtilisateur'])) {
+		      // Affichage du formulaire de commentaire si l'utilisateur est connecté, sinon on affiche un msg par défaut, en l'invitant
+		      // a se connecter avant de pouvoir poster un formulaire
+		  ?>
 		  <hr class="separationCommentaire">
 
+		  <?php echo "Bon retour dans cette aventure, " . "<strong>" . $_SESSION['nomUtilisateur'] . "</strong>" . " vous pouvez commenter ci-dessous si vous le souhaitez."; ?> <br /><br />
+		  
 			<h3>Postez un commentaire</h3>
 			<form method="post" action="index.php?action=commenter">
 				<fieldset>
 					<label for="nom">Nom <em>*</em></label>
-					<input id="nom" name="auteurCommentaire" type="text" placeholder="Iron Man" required>
+					<input id="nom" name="auteurCommentaire" type="text" placeholder="<?= $_SESSION['nomUtilisateur'] ?>" required>
 					<br /> 
 				</fieldset>
 				<fieldset>
@@ -61,3 +66,7 @@
 	<!-- /.row -->
 </div>
 <!-- /.container -->
+
+<?php } else {
+            echo 'Veuillez vous' . '<a href="index.php?action=afficherPageConnexion"> connecter </a>' . 'pour poster un commentaire';
+}?> 
