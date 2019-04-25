@@ -18,7 +18,7 @@ class ControleurPost {
         $this->commentaireManager = new CommentaireManager();
     }
     
-    // Affiche les détails sur un billet
+    // Affiche les détails sur les romans
     public function post($msgErreur = '') {
        if (isset($_REQUEST['idPost'])) {
             $idPost = $_REQUEST['idPost'];
@@ -33,6 +33,7 @@ class ControleurPost {
         ));
     }
     
+    // Permet l'ajout d'un commentaire sous un roman
     public function commenter($msgErreur = '', $msgValide = '') {
         if (isset($_POST['commenter']) && ($_POST['auteurCommentaire']) && ($_POST['contenuCommentaire']) && ($_POST['idPost'])) {
             $com = new Commentaire([
