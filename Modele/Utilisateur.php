@@ -27,7 +27,7 @@ class Utilisateur extends AbstractEntity {
     
     
     // Liste des setters
-    public function setId($id) {
+    public function setIdUtilisateur($id) {
         // Les valeurs possibles de l'identifiant sont tous les nombres entiers strictement positifs
         // On convertir l'argument en nombre entier
         // Si c'en était déjà un rien ne changera

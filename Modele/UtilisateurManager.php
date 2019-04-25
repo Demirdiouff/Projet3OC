@@ -37,17 +37,23 @@ class UtilisateurManager extends Modele {
         $bdd->exec('DELETE FROM utilisateurs WHERE id = ' . $user->id());
     }
     
-    public function getUser($idUtilisateur) {
+    public function getUser($idUser) {
         // Exécute une requête de type SELECT avec une clause WHERE, et retourne un objet Utilisateur
         $bdd = $this->getBdd();
         $getOneUser = $bdd->prepare('SELECT * from utilisateurs where id_utilisateur=?');
-        $getOneUser->execute(array($idUtilisateur));
+        $getOneUser->execute(array($idUser));
         if ($getOneUser->rowCount() == 1) {
             $fetchOneUser = $getOneUser->fetch();
             return new Utilisateur($fetchOneUser); // Accès à la première ligne de résultat
         } else {
             throw new Exception("Mot de passe ou identifiant incorrect");
         }
+    }
+    
+    public function getUserId() {
+        $bdd = $this->getBdd();
+        $getUserId = $bdd->prepare('SELECT id_utilisateur from utilisateurs where nom_utilisateur=?');
+        $getUserId->execute();
     }
     
     public function getUserByLoginPassword($login, $password) {
