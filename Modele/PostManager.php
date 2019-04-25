@@ -27,8 +27,11 @@ class PostManager extends Modele {
         // Assignation des valeurs à la requête
         // Exécution de la requête
         $bdd = $this->getBdd();
-        $add = $bdd->prepare('INSERT INTO posts(id_post, date_post, titre_post, contenu_post) VALUES(null, :date_post, :titre_post, :contenu_post)');
-        $add->bindValue(':date_post', $post->datePost());
+        $add = $bdd->prepare('INSERT INTO posts(id_post, date_post, auteur_post, titre_post, contenu_post) VALUES(null, :date_post, :auteur_post, :titre_post, :contenu_post)');
+        $date = date(DATE_W3C); // Récupère la date courante
+        $today = date("Y-m-d H:i:s");
+        $add->bindValue(':date_post', $today);
+        $add->bindValue(':auteur_post', $post->auteurPost());
         $add->bindValue(':titre_post', $post->titrePost());
         $add->bindValue(':contenu_post', $post->contenuPost());
         $add->execute();

@@ -6,6 +6,7 @@ class Post extends AbstractEntity {
     
     private $id_post;
     private $date_post;
+    private $auteur_post;
     private $titre_post;
     private $contenu_post;
     
@@ -20,6 +21,10 @@ class Post extends AbstractEntity {
     
     public function datePost() {
         return $this->date_post;
+    }
+    
+    public function auteurPost() {
+        return $this->auteur_post;
     }
     
     public function titrePost() {
@@ -46,10 +51,18 @@ class Post extends AbstractEntity {
     }
     
     public function setDatePost($datePost) {
-        // Les valeurs possibles du post sont des champs date
+        // Les valeurs possibles du date post sont des champs date
         // On vérifie qu'il s'agit bien d'une date
         if (is_string($datePost)) {    
             $this->date_post = $datePost;
+        }
+    }
+    
+    public function setAuteurPost($auteurPost) {
+        // Les valeurs possibles de l'auteur post sont toutes les chaînes de caractères
+        // On vérifie qu'il s'agit bien d'une chaîne de caractère
+        if (is_string($auteurPost)) {
+            $this->auteur_post = $auteurPost;
         }
     }
     
@@ -67,6 +80,11 @@ class Post extends AbstractEntity {
         if (is_string($contenuPost)) {
             $this->contenu_post = $contenuPost;
         }
+    }
+    
+    // On vérifie si l'auteur du post est valide
+    public function auteurValide() {
+        return !empty($this->auteur_post);
     }
     
     // On vérifie si le titre du post est valide
