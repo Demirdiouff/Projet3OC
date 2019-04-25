@@ -50,9 +50,9 @@
 			<?= $contenu; ?>
 
 
-	<footer class="footer">
-		<p><a href="index.php?action=pageConnexion">Espace d'administration</a></p>
-	</footer>
+<!-- 	<footer class="footer"> -->
+<!-- 		<p><a href="index.php?action=pageConnexion">Espace d'administration</a></p> -->
+<!-- 	</footer> -->
 	<!-- /container -->
 	<!-- /container -->
 	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->

@@ -58,6 +58,9 @@
 	<hr>
 	
       <footer class="footer">
+      <?php if (isset($_SESSION['nomUtilisateur'])) {
+                echo "<p class='affichageNomSurPageRoman'>Salutations " . $_SESSION['nomUtilisateur'] . "</p>";
+            } ?>
         <p><a href="index.php?action=pageConnexion">Espace d'administration</a></p>
       </footer> <!-- /container -->
 
