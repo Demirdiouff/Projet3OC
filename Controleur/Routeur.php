@@ -6,6 +6,7 @@ require_once 'Controleur/ControleurPost.php';
 require_once 'Controleur/ControleurContact.php';
 require_once 'Controleur/ControleurPageConnexion.php';
 require_once 'Controleur/ControleurEspaceAdmin.php';
+require_once 'Controleur/Deconnexion.php';
 require_once 'Framework/Debug.php';
 require_once 'Vue/Vue.php';
 
@@ -32,9 +33,25 @@ class Routeur
     
     private $ctrlConnexion;
     
+    private $ctrlAfficherPageConnexion;
+    
     private $ctrlEspaceAdmin;
     
+    private $ctrlPageAjoutRoman;
+    
+    private $ctrlAjoutRoman;
+    
+    private $ctrlPageModifierRoman;
+    
+    private $ctrlModifierRoman;
+    
+    private $ctrlPageSupprimerRoman;
+    
+    private $ctrlSupprimerRoman;
+    
     private $ctrlSignalementCommentaire;
+    
+    private $ctrlDeconnexion;
 
     public function __construct()
     {
@@ -49,6 +66,7 @@ class Routeur
             if (isset($_GET['action'])) {
                 $action = $_GET['action'];
             }
+            // faire un deuxieme switch en comprenant les pages admins et où on ne peut y aller sans $_SESSION, dans ce cas, on appelle la pageConnexion
             switch ($action) {
                 case 'accueil':
                     $this->ctrlAccueil = new ControleurAccueil();
@@ -69,10 +87,6 @@ class Routeur
                 case 'commenter':
                     $this->ctrlAjoutCommentaireBillet = new ControleurPost();
                     $this->ctrlAjoutCommentaireBillet->commenter();
-//                     $auteur = $this->getParametre($_POST, 'auteur');
-//                     $contenu = $this->getParametre($_POST, 'contenu');
-//                     $idBillet = $this->getParametre($_POST, 'id');
-//                     $this->ctrlAjoutCommentaireBillet->commenter($auteur, $contenu, $idBillet);
                     break;
                 case 'contact':
                     $this->ctrlContact = new ControleurContact();
@@ -82,29 +96,53 @@ class Routeur
                     $this->ctrlPageConnexion = new ControleurPageConnexion();
                     $this->ctrlPageConnexion->pageConnexion();
                     break;
-//                 case 'pageConnexionApresSubmit':
-//                     $this->ctrlPageConnexionApresSubmit = new ControleurPageConnexion();
-//                     $this->ctrlPageConnexionApresSubmit->pageConnexionApresSubmit();
-//                     break;
                 case 'inscription':
                     $this->ctrlInscription = new ControleurPageConnexion();
                     $this->ctrlInscription->inscription();
-//                     $this->ctrlInscription = new ControleurEspaceAdmin();
-//                     $pseudo = $this->getParametre($_POST, 'pseudo');
-//                     $motDePasse = $this->getParametre($_POST, 'motDePasse');
-//                     $this->ctrlInscription->inscription($pseudo, $motDePasse);
                     break;
                 case 'connexion':
                     $this->ctrlConnexion = new ControleurPageConnexion();
                     $this->ctrlConnexion->connexion();
                     break;
+                case 'afficherPageConnexion':
+                    $this->ctrlAfficherPageConnexion = new ControleurPageConnexion();
+                    $this->ctrlAfficherPageConnexion->pageConnexion();
+                    break;
                 case 'espaceAdmin':
                     $this->ctrlEspaceAdmin = new ControleurEspaceAdmin();
                     $this->ctrlEspaceAdmin->espaceAdmin();
                     break;
+                case 'pageAjoutRoman': 
+                    $this->ctrlPageAjoutRoman = new ControleurEspaceAdmin();
+                    $this->ctrlPageAjoutRoman->pageAjoutRoman();
+                    break;
+                case 'ajouterRoman':
+                    $this->ctrlAjoutRoman = new ControleurEspaceAdmin();
+                    $this->ctrlAjoutRoman->ajouterRoman();
+                    break;
+                case 'pageModifierRoman':
+                    $this->ctrlPageModifierRoman = new ControleurEspaceAdmin();
+                    $this->ctrlPageModifierRoman->pageModifierRoman();
+                    break;
+//                 case 'modifierRoman':
+//                     $this->ctrlModifierRoman = new ControleurEspaceAdmin();
+//                     $this->ctrlModifierRoman->modifierRoman();
+//                     break;
+                case 'pageSupprimerRoman':
+                    $this->ctrlPageSupprimerRoman = new ControleurEspaceAdmin();
+                    $this->ctrlPageSupprimerRoman->pageSupprimerRoman();
+                    break;
+//                 case 'supprimerRoman':
+//                     $this->ctrlSupprimerRoman = new ControleurEspaceAdmin();
+//                     $this->ctrlSupprimerRoman->supprimerRoman();
+//                     break;
                 case 'signalementCommentaire': 
                     $this->ctrlSignalementCommentaire = new ControleurPost();
                     $this->ctrlSignalementCommentaire->signalerCommentaire();
+                    break;
+                case 'deconnexion':
+                    $this->ctrlDeconnexion = new Deconnexion();
+                    $this->ctrlDeconnexion->deconnexion();
                     break;
                 // faire quelque chose
                 default:
