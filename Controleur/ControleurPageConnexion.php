@@ -9,20 +9,22 @@ class ControleurPageConnexion {
     
     private $manager;
     
+    private $postManager;
+    
+    private $commentaireManager;
+
     public function __construct() {
         $this->manager = new UtilisateurManager();
     }
     
     public function pageConnexion($msgErreurInscription = '', $msgValideInscription = '', $msgErreurConnexion = '', $msgValideConnexion = '') {
+        if (isset($_SESSION['nomUtilisateur'])) {
+            header("Location: index.php?action=espaceAdmin");
+        }
         $vue = new Vue("connexion", "Espace d'administration");
-        $vue->genererPageConnexion(array('msgErreurInscription' => $msgErreurInscription, 'msgValideInscription' => $msgValideInscription, 'msgErreurConnexion' => $msgValideConnexion));
+        $vue->genererPageConnexion(array('msgErreurInscription' => $msgErreurInscription, 'msgValideInscription' => $msgValideInscription, 'msgErreurConnexion' => $msgErreurConnexion, 'msgValideConnexion' => $msgValideConnexion));
+        
     }
-    
-//     public function pageConnexionApresSubmit($msgErreur = '', $msgValide ='') {
-//         $vue = new Vue("connexionReussie", "Espace d'administration");
-//         $vue->genererPageConnexionApresSubmit(array('msgErreur' => $msgErreur, 'msgValide' => $msgValide));
-//         Debug::printPile();
-//     }
     
     public function inscription() {
         if (isset($_POST['inscription']) && ($_POST['nomUtilisateur']) && ($_POST['motDePasse'])) {
@@ -41,39 +43,25 @@ class ControleurPageConnexion {
             } else {
                 $this->manager->add($user);
                 $msgValideInscription = '<p style="color:green;text-align:center;">Inscription réussie. Vous pouvez à présent vous connecter.</p>';
-                $this->pageConnexion($msgValideInscription);
+                $this->pageConnexion('', $msgValideInscription);
                 unset($user);
             }
         }
-//         $this->pageConnexionApresSubmit();
-//         if (isset($_POST['inscription']) && ($_POST['pseudo']) && ($_POST['motDePasse'])) {
-//             $pseudo = $_POST['pseudo'];
-//             $motDePasse = password_hash($_POST['motDePasse'], PASSWORD_DEFAULT);
-//             $this->identifiant->ajoutIdentifiant($pseudo, $motDePasse);
-//         }
-//         $this->espaceAdmin();
     }
 
     public function connexion() {
         if (isset($_POST['connexion']) && ($_POST['nomUtilisateur']) && ($_POST['motDePasse'])) {
             $user = $this->manager->getUserByLoginPassword($_POST['nomUtilisateur'], $_POST['motDePasse']);
-            $msgValideConnexion = '<p style="color:black">Connexion réussie. Bienvenue !</p>';
-            // Session.......
-            $this->pageConnexion($msgValideConnexion);
-            unset($user);
+//             $user = new Utilisateur([
+//                 'nomUtilisateur' => $_POST['nomUtilisateur'],
+//                 'motDePasse' => $_POST['motDePasse']
+//             ]);
+            $_SESSION['idUtilisateur'] = $user->id();
+            $_SESSION['nomUtilisateur'] = $user->nomUtilisateur();
+            header("Location: index.php?action=espaceAdmin");
         } else {
             $msgErreurConnexion = '<p style="color:red">Impossible de se connecter, mot de passe ou identifiant incorrect.</p>';
             $this->pageConnexion($msgErreurConnexion);
-            unset($user);
         }
     }
-    
-    
-//     public function connexion($pseudo, $motDePasse) {
-//         if (isset($_POST['connexion']) && ($_POST['pseudo']) && $_POST['motDePasse']) {
-//             $motDePasse = password_verify($_POST['motDePasse'], PASSWORD_DEFAULT);
-//         $this->identifiant->verifIdentifiant($pseudo);
-//         }
-//         $this->espaceAdmin();
-//     }
 }
