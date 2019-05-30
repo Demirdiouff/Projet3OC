@@ -136,3 +136,8 @@ tr.couleurLigneTableau {
 tr.couleurLigneTableau:hover {
 	background-color: RGB(83,139,197) !important;
 }
+input[type="submit"] {
+    background-color: #5CB85C;
+    border: none;
+    color: white;
+}
