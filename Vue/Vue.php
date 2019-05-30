@@ -18,7 +18,7 @@ class Vue {
         // Génération de la partie spécifique de la vue
         $contenu = $this->genererFichier($this->fichier, $donnees);
         // Génération ddu gabarit commun utilisant la partie spécifique
-        $vue = $this->genererFichier('Vue/template.php', array('titre' => $this->titre, 'contenu' => $contenu));
+        $vue = $this->genererFichier('Vue/templatePageAccueil.php', array('titre' => $this->titre, 'contenu' => $contenu));
         // Renvoi de la vue au navigateur
         echo $vue;
     }
@@ -27,7 +27,7 @@ class Vue {
         // Génération de la partie spécifique de la vue, semblable a la fonction generer mais pour un autre template et styleConnexion.css
         $contenu = $this->genererfichier($this->fichier, $donnees);
         // Génération du gabarit commun utilisant la partie spécifique
-        $vue = $this->genererfichier('Vue/templateConnexion.php', array('titre' => $this->titre, 'contenu' => $contenu));
+        $vue = $this->genererfichier('Vue/templatePageConnexion.php', array('titre' => $this->titre, 'contenu' => $contenu));
         // Renvoi de la vue au navigateur
         echo $vue;
     }
@@ -41,38 +41,11 @@ class Vue {
         echo $vue;
     }
     
-//     public function genererPageAjoutRoman($donnees) {
-//         // Génération de la partie spécifique de la vue, semblable a la fonction generer mais pour un autre template et styleErreurs.css
-//         $contenu = $this->genererfichier($this->fichier, $donnees);
-//         // Génération du gabarit commun utilisant la partie spécifique
-//         $vue = $this->genererfichier('Vue/templateEspaceAdmin.php', array('titre' => $this->titre, 'contenu' => $contenu));
-//         // Renvoi de la vue au navigateur
-//         echo $vue;
-//     }
-    
-//     public function genererPageModifRoman($donnees) {
-//         // Génération de la partie spécifique de la vue, semblable a la fonction generer mais pour un autre template et styleErreurs.cEs
-//         $contenu = $this->genererfichier($this->fichier, $donnees);
-//         // Génération du gabarit commun utilisant la partie spécifique
-//         $vue = $this->genererfichier('Vue/templateEspaceAdmin.php', array('titre' => $this->titre, 'contenu' => $contenu));
-//         // Renvoi de la vue au navigateur
-//         echo $vue;
-//     }
-    
-//     public function genererPageSupprimerRoman($donnees) {
-//         // Génération de la partie spécifique de la vue, semblable a la fonction generer mais pour un autre template et styleErreurs.cEs
-//         $contenu = $this->genererfichier($this->fichier, $donnees);
-//         // Génération du gabarit commun utilisant la partie spécifique
-//         $vue = $this->genererfichier('Vue/templateEspaceAdmin.php', array('titre' => $this->titre, 'contenu' => $contenu));
-//         // Renvoi de la vue au navigateur
-//         echo $vue;
-//     }
-    
     public function genererPagePropos($donnees) {
         // Génération de la partie spécifique de la vue, semblable a la fonction generer mais pour un autre template et stylePropos.css
         $contenu = $this->genererfichier($this->fichier, $donnees);
         // Génération du gabarit commun utilisant la partie spécifique
-        $vue = $this->genererfichier('Vue/templatePropos.php', array('titre' => $this->titre, 'contenu' => $contenu));
+        $vue = $this->genererfichier('Vue/templatePagePropos.php', array('titre' => $this->titre, 'contenu' => $contenu));
         // Renvoi de la vue au navigateur
         echo $vue;
     }
@@ -81,7 +54,7 @@ class Vue {
         // Génération de la partie spécifique de la vue, semblable a la fonction generer mais pour un autre template et styleContact.css
         $contenu = $this->genererfichier($this->fichier, $donnees);
         // Génération du gabarit commun utilisant la partie spécifique
-        $vue = $this->genererfichier('Vue/templateContact.php', array('titre' => $this->titre, 'contenu' => $contenu));
+        $vue = $this->genererfichier('Vue/templatePageContact.php', array('titre' => $this->titre, 'contenu' => $contenu));
         // Renvoi de la vue au navigateur
         echo $vue;
     }
@@ -90,7 +63,7 @@ class Vue {
         // Génération de la partie spécifique de la vue, semblable a la fonction generer mais pour un autre template et styleRoman.css
         $contenu = $this->genererfichier($this->fichier, $donnees);
         // Génération du gabarit commun utilisant la partie spécifique
-        $vue = $this->genererfichier('Vue/templateRoman.php', array('titre' => $this->titre, 'contenu' => $contenu));
+        $vue = $this->genererfichier('Vue/templatePageRoman.php', array('titre' => $this->titre, 'contenu' => $contenu));
         // Renvoi de la vue au navigateur
         echo $vue;
     }
@@ -99,7 +72,7 @@ class Vue {
         // Génération de la partie spécifique de la vue, semblable a la fonction generer mais pour un autre template et styleBillet.css
         $contenu = $this->genererfichier($this->fichier, $donnees);
         // Génération du gabarit commun utilisant la partie spécifique
-        $vue = $this->genererfichier('Vue/templateBillet.php', array('titre' => $this->titre, 'contenu' => $contenu));
+        $vue = $this->genererfichier('Vue/templatePageChapitre.php', array('titre' => $this->titre, 'contenu' => $contenu));
         // Renvoi de la vue au navigateur
         echo $vue;
     }
@@ -108,7 +81,7 @@ class Vue {
         // Génération de la partie spécifique de la vue, semblable a la fonction generer mais pour un autre template et styleErreurs.cEs
         $contenu = $this->genererfichier($this->fichier, $donnees);
         // Génération du gabarit commun utilisant la partie spécifique
-        $vue = $this->genererfichier('Vue/templateErreurs.php', array('titre' => $this->titre, 'contenu' => $contenu));
+        $vue = $this->genererfichier('Vue/templatePageErreurs.php', array('titre' => $this->titre, 'contenu' => $contenu));
         // Renvoi de la vue au navigateur
         echo $vue;
     }
