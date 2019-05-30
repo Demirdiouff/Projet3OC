@@ -7,6 +7,7 @@ class Utilisateur extends AbstractEntity {
     private $id_utilisateur;
     private $nom_utilisateur;
     private $mot_de_passe;
+    private $is_admin;
     
     public function __construct(array $donnees) {
         $this->hydrate($donnees);
@@ -25,6 +26,10 @@ class Utilisateur extends AbstractEntity {
         return $this->mot_de_passe;
     }
     
+    public function isAdmin() {
+        return $this->is_admin;
+    }
+    
     
     // Liste des setters
     public function setIdUtilisateur($id) {
@@ -34,7 +39,7 @@ class Utilisateur extends AbstractEntity {
         // Sinon, la conversion donnera le nombre 0 (à quelques exceptions près) 
         $id = (int) $id;
         
-        // On vérifie ensuite si ce nobmre est bien strictement positif
+        // On vérifie ensuite si ce nombre est bien strictement positif
         if ($id > 0) {
             // Si c'est le cas, c'est parfait, on assigne la valeur à l'attribut correspondant
             $this->id_utilisateur = $id;
@@ -54,6 +59,20 @@ class Utilisateur extends AbstractEntity {
         // Toujours de la même manière on vérifie qu'il s'agit bien d'une chaîne de caractères
         if (is_string($motDePasse)) {
             $this->mot_de_passe = $motDePasse;
+        }
+    }
+    
+    public function setIsAdmin($isAdmin) {
+        // Les valeurs possibles de l'identifiant sont tous les nombres entiers strictement positifs
+        // On convertir l'argument en nombre entier
+        // Si c'en était déjà un rien ne changera
+        // Sinon, la conversion donnera le nombre 0 (à quelques exceptions près) 
+        $isAdmin = (int) $isAdmin;
+        
+        // On vérifie ensuite si ce nombre est bien strictement positif
+        if ($isAdmin > 0) {
+            // Si c'est le cas, c'est parfait, on assigne la valeur à l'attribut correspondant
+            $this->is_admin = $isAdmin;
         }
     }
     
