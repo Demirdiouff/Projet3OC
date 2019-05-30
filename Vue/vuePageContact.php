@@ -22,7 +22,7 @@ $titre = 'Page Contact - ';
 			<label for="lname">Prénom</label>
 				<input type="text" id="lname" name="lastname" placeholder="">
 			<label for="lname">Nom d'utilisateur</label>
-				<input type="text" id="lname" name="lastname" value="<?= $_SESSION['nomUtilisateur'] ?>" placeholder="">
+				<input type="text" id="lname" name="lastname" value="<?php if (isset($_SESSION['nomUtilisateur'])) { echo $_SESSION['nomUtilisateur']; } ?>" placeholder="">
 			<label for="subject">Sujet</label>
 				<textarea id="subject" name="subject" placeholder="Ecrivez quelque chose..." style="height: 200px"></textarea>
 			<input type="submit" value="Envoyer">

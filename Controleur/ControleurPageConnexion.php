@@ -62,7 +62,7 @@ class ControleurPageConnexion {
                 $_SESSION['isAdmin'] = $user->isAdmin();
                 header("Location: index.php?action=espaceAdmin");
             } else {
-                header("Location: index.php?action=roman");
+                header("Location: index.php?action=pageRoman");
             }
         } else {
             $msgErreurConnexion = '<p style="color:red">Impossible de se connecter, mot de passe ou identifiant incorrect.</p>';
