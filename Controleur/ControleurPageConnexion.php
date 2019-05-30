@@ -21,7 +21,7 @@ class ControleurPageConnexion {
         if (isset($_SESSION['nomUtilisateur'])) {
             header("Location: index.php?action=espaceAdmin");
         }
-        $vue = new Vue("connexion", "Espace d'administration");
+        $vue = new Vue("PageConnexion", "Espace d'administration");
         $vue->genererPageConnexion(array('msgErreurInscription' => $msgErreurInscription, 'msgValideInscription' => $msgValideInscription, 'msgErreurConnexion' => $msgErreurConnexion, 'msgValideConnexion' => $msgValideConnexion));
         
     }
@@ -58,7 +58,12 @@ class ControleurPageConnexion {
 //             ]);
             $_SESSION['idUtilisateur'] = $user->id();
             $_SESSION['nomUtilisateur'] = $user->nomUtilisateur();
-            header("Location: index.php?action=espaceAdmin");
+            if ($user->isAdmin() == 1) {
+                $_SESSION['isAdmin'] = $user->isAdmin();
+                header("Location: index.php?action=espaceAdmin");
+            } else {
+                header("Location: index.php?action=roman");
+            }
         } else {
             $msgErreurConnexion = '<p style="color:red">Impossible de se connecter, mot de passe ou identifiant incorrect.</p>';
             $this->pageConnexion($msgErreurConnexion);
