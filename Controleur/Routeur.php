@@ -1,9 +1,9 @@
 <?php
-require_once 'Controleur/ControleurAccueil.php';
-require_once 'Controleur/ControleurPropos.php';
-require_once 'Controleur/ControleurRoman.php';
-require_once 'Controleur/ControleurPost.php';
-require_once 'Controleur/ControleurContact.php';
+require_once 'Controleur/ControleurPageAccueil.php';
+require_once 'Controleur/ControleurPagePropos.php';
+require_once 'Controleur/ControleurPageRoman.php';
+require_once 'Controleur/ControleurPageChapitre.php';
+require_once 'Controleur/ControleurPageContact.php';
 require_once 'Controleur/ControleurPageConnexion.php';
 require_once 'Controleur/ControleurEspaceAdmin.php';
 require_once 'Controleur/Deconnexion.php';
@@ -13,17 +13,17 @@ require_once 'Vue/Vue.php';
 class Routeur
 {
 
-    private $ctrlAccueil;
+    private $ctrlPageAccueil;
     
-    private $ctrlPropos;
+    private $ctrlPagePropos;
 
-    private $ctrlRoman;
+    private $ctrlPageRoman;
     
-    private $ctrlPost;
+    private $ctrlPageChapitre;
     
     private $ctrlAjoutCommentaireBillet;
     
-    private $ctrlContact;
+    private $ctrlPageContact;
     
     private $ctrlPageConnexion;
     
@@ -51,6 +51,12 @@ class Routeur
     
     private $ctrlSignalementCommentaire;
     
+    private $ctrlPageCommentairesSignales;
+    
+    private $ctrlAutoriserCommentaireSignale;
+    
+    private $ctrlSupprimerCommentaireSignale;
+    
     private $ctrlDeconnexion;
 
     public function __construct()
@@ -62,35 +68,35 @@ class Routeur
     public function routerRequete()
     {
         try {
-            $action = 'accueil';
+            $action = 'pageAccueil';
             if (isset($_GET['action'])) {
                 $action = $_GET['action'];
             }
             // faire un deuxieme switch en comprenant les pages admins et où on ne peut y aller sans $_SESSION, dans ce cas, on appelle la pageConnexion
             switch ($action) {
-                case 'accueil':
-                    $this->ctrlAccueil = new ControleurAccueil();
-                    $this->ctrlAccueil->accueil();
+                case 'pageAccueil':
+                    $this->ctrlPageAccueil = new ControleurPageAccueil();
+                    $this->ctrlPageAccueil->accueil();
                     break;
-                case 'propos':
-                    $this->ctrlPropos = new ControleurPropos();
-                    $this->ctrlPropos->propos();
+                case 'pagePropos':
+                    $this->ctrlPagePropos = new ControleurPagePropos();
+                    $this->ctrlPagePropos->propos();
                     break;
-                case 'roman':
-                    $this->ctrlRoman = new ControleurRoman();
-                    $this->ctrlRoman->roman();
+                case 'pageRoman':
+                    $this->ctrlPageRoman = new ControleurPageRoman();
+                    $this->ctrlPageRoman->roman();
                     break;
-                case 'billetRoman':
-                    $this->ctrlBillet = new ControleurPost();
-                    $this->ctrlBillet->post();
+                case 'pageChapitre':
+                    $this->ctrlPageChapitre = new ControleurPageChapitre();
+                    $this->ctrlPageChapitre->post();
                     break;
                 case 'commenter':
-                    $this->ctrlAjoutCommentaireBillet = new ControleurPost();
+                    $this->ctrlAjoutCommentaireBillet = new ControleurPageChapitre();
                     $this->ctrlAjoutCommentaireBillet->commenter();
                     break;
-                case 'contact':
-                    $this->ctrlContact = new ControleurContact();
-                    $this->ctrlContact->contact();
+                case 'pageContact':
+                    $this->ctrlPageContact = new ControleurPageContact();
+                    $this->ctrlPageContact->contact();
                     break;
                 case 'pageConnexion':
                     $this->ctrlPageConnexion = new ControleurPageConnexion();
@@ -104,9 +110,9 @@ class Routeur
                     $this->ctrlConnexion = new ControleurPageConnexion();
                     $this->ctrlConnexion->connexion();
                     break;
-                case 'afficherPageConnexion':
-                    $this->ctrlAfficherPageConnexion = new ControleurPageConnexion();
-                    $this->ctrlAfficherPageConnexion->pageConnexion();
+                case 'PageConnexion':
+                    $this->ctrlPageConnexion = new ControleurPageConnexion();
+                    $this->ctrlPageConnexion->pageConnexion();
                     break;
                 case 'espaceAdmin':
                     $this->ctrlEspaceAdmin = new ControleurEspaceAdmin();
@@ -124,21 +130,33 @@ class Routeur
                     $this->ctrlPageModifierRoman = new ControleurEspaceAdmin();
                     $this->ctrlPageModifierRoman->pageModifierRoman();
                     break;
-//                 case 'modifierRoman':
-//                     $this->ctrlModifierRoman = new ControleurEspaceAdmin();
-//                     $this->ctrlModifierRoman->modifierRoman();
-//                     break;
+                case 'modifierRoman':
+                    $this->ctrlModifierRoman = new ControleurEspaceAdmin();
+                    $this->ctrlModifierRoman->modifierRoman();
+                    break;
                 case 'pageSupprimerRoman':
                     $this->ctrlPageSupprimerRoman = new ControleurEspaceAdmin();
                     $this->ctrlPageSupprimerRoman->pageSupprimerRoman();
                     break;
-//                 case 'supprimerRoman':
-//                     $this->ctrlSupprimerRoman = new ControleurEspaceAdmin();
-//                     $this->ctrlSupprimerRoman->supprimerRoman();
-//                     break;
+                case 'supprimerRoman':
+                    $this->ctrlSupprimerRoman = new ControleurEspaceAdmin();
+                    $this->ctrlSupprimerRoman->supprimerRoman();
+                    break;
                 case 'signalementCommentaire': 
-                    $this->ctrlSignalementCommentaire = new ControleurPost();
+                    $this->ctrlSignalementCommentaire = new ControleurPageChapitre();
                     $this->ctrlSignalementCommentaire->signalerCommentaire();
+                    break;
+                case 'pageCommentairesSignales':
+                    $this->ctrlPageCommentairesSignales = new ControleurEspaceAdmin();
+                    $this->ctrlPageCommentairesSignales->pageCommentairesSignales();
+                    break;
+                case 'autoriserCommentaireSignale':
+                    $this->ctrlAutoriserCommentaireSignale = new ControleurEspaceAdmin();
+                    $this->ctrlAutoriserCommentaireSignale->autoriserCommentaireSignale();
+                    break;
+                case 'supprimerCommentaireSignale':
+                    $this->ctrlSupprimerCommentaireSignale = new ControleurEspaceAdmin();
+                    $this->ctrlSupprimerCommentaireSignale->supprimerCommentaireSignale();
                     break;
                 case 'deconnexion':
                     $this->ctrlDeconnexion = new Deconnexion();
@@ -153,18 +171,20 @@ class Routeur
         }
     }
 
-    private function getParametre($tableau, $nom)
-    {
-        if (isset($tableau[$nom])) {
-            return $tableau[$nom];
-        } else
-            throw new Exception("Paramètre '$nom' absent");
-    }
+// Plus fonctionnel a ce stade du framework car Routeur modifié 
+// et ne nécessite plus de paramètres pour fonctionner
+//     private function getParametre($tableau, $nom)
+//     {
+//         if (isset($tableau[$nom])) {
+//             return $tableau[$nom];
+//         } else
+//             throw new Exception("Paramètre '$nom' absent");
+//     }
 
     // Affiche une erreur
     private function erreur($msgErreur)
     {
-        $vue = new Vue("Erreurs");
+        $vue = new Vue("PageErreurs");
         $vue->genererPageErreurs(array(
             'msgErreur' => $msgErreur
         ));
