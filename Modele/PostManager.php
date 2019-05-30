@@ -40,7 +40,7 @@ class PostManager extends Modele {
     public function delete(Post $post) {
         // Exécute une requête de type DELETE
         $bdd = $this->getBdd();
-        $bdd->exec('DELETE FROM posts WHERE id = ' . $post->id());
+        $bdd->exec('DELETE FROM posts WHERE id_post = ' . $post->id());
     }
     
     public function getPost($idPost) {

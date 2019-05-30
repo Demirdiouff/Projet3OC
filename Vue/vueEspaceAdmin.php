@@ -23,8 +23,8 @@
           <ul class="nav nav-sidebar">
             <li class="active"><a href="index.php?action=espaceAdmin">Accueil <span class="sr-only">(current)</span></a></li>
             <li><a href="index.php?action=pageAjoutRoman">Ajouter un article</a></li>
-            <li><a href="index.php?action=pageModifierRoman">Modifier un article</a></li>
-            <li><a href="index.php?action=pageSupprimerRoman">Supprimer un article</a></li>
+            <li><a href="index.php?action=pageSupprimerRoman">Supprimer un article</a></li><br />
+            <li><a href="index.php?action=pageCommentairesSignales">Commentaires signalés</a></li>
           </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
@@ -56,6 +56,7 @@
                         } else {
                         echo '0';
                         }?></td>
+                  <td><a href="index.php?action=pageModifierRoman&idPost=<?= $post->id()?>" class="btn btn-warning"><span class="glyphicon glyphicon-download-alt"></span> Modifier</a></td>
                 </tr>
               </tbody>
 			  <?php endforeach; ?>
