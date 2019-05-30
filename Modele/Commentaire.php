@@ -33,7 +33,7 @@ class Commentaire extends AbstractEntity {
     }
     
     public function signalementCommentaire() {
-        return $this->signalementCommentaire;
+        return $this->signalement_commentaire;
     }
     
     public function idPost() {
@@ -41,7 +41,7 @@ class Commentaire extends AbstractEntity {
     }
     
     // Liste des setters
-    public function setId($id) {
+    public function setIdCommentaire($id) {
         // Les valeurs possibles de l'identifiant sont tous les nombres entiers strictement positifs
         // On convertit l'argument en nombre entier
         // Si c'en était déjà un rien ne changera

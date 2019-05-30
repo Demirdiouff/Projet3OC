@@ -96,12 +96,30 @@ class CommentaireManager extends Modele {
         $ligneBdd = $bdd->query('SELECT id_post, count(*) as nb_commentaire from commentaires group BY id_post');
         $ligneBdd->execute();
         $tableauNbCommentaire = array();
-        while($currentLine = $ligneBdd->fetch()) {
+        while ($currentLine = $ligneBdd->fetch()) {
             $currentIdPost = $currentLine['id_post'];
             $currentCount = $currentLine['nb_commentaire'];
             $tableauNbCommentaire[$currentIdPost] = $currentCount;
         }
         return $tableauNbCommentaire;
+    }
+    
+    public function getTableauCommentairesSignales() {
+        $commentairesSignales = [];
+        $bdd = $this->getBdd();
+        $getCommentairesSignales = $bdd->query('SELECT * from commentaires WHERE signalement_commentaire > 0');
+        while ($commentaireSignale = $getCommentairesSignales->fetch(PDO::FETCH_ASSOC)) {
+            $commentairesSignales[] = new Commentaire($commentaireSignale);
+        }
+        return $commentairesSignales;
+    }
+    
+    public function reinitialiserSignalementCommentaire($idCommentaire) {
+        $bdd = $this->getBdd();
+        $reinitialiserSignalementCommentaire = $bdd->prepare('UPDATE commentaires SET signalement_commentaire = 0 WHERE id_commentaire = :id_commentaire');
+        $reinitialiserSignalementCommentaire->bindValue(':id_commentaire', $idCommentaire);
+        $reinitialiserSignalementCommentaire->execute();
+        return $reinitialiserSignalementCommentaire;
     }
 
 //     Peut être utile pour un retour de commentaire sur post unique
