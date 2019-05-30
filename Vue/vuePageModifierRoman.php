@@ -1,5 +1,7 @@
 <?php
 
+if (false) $post = new Post(); 
+
 ?>
 <nav class="navbar navbar-inverse navbar-fixed-top">
 	<div class="container-fluid">
@@ -27,62 +29,32 @@
 			<ul class="nav nav-sidebar">
 				<li><a href="index.php?action=espaceAdmin">Accueil</a></li>
 				<li><a href="index.php?action=pageAjoutRoman">Ajouter un article</a></li>
-				<li class="active"><a href="index.php?action=pageModifierRoman">Modifier un article <span class="sr-only">(current)</span></a></li>
-				<li><a href="index.php?action=pageSupprimerRoman">Supprimer un article</a></li>
+				<li class="active"><a href="#">Modifier un article <span class="sr-only">(current)</span></a></li>
+				<li><a href="index.php?action=pageSupprimerRoman">Supprimer un article</a></li><br />
+				<li><a href="index.php?action=pageCommentairesSignales">Commentaires signalés</a></li>
 			</ul>
 		</div>
 		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-			<h2 class="sub-header">Modifier un chapitre</h2>
+			<h2 class="sub-header">Modification "<strong><?= $post->titrePost()?></strong>"</h2>
+			<form method="post" action="index.php?action=modifierRoman">
 			<div class="table-responsive">
 				<div class="form-group">
 					<label for="usr">Auteur :</label> <input type="text"
-						class="form-control" id="usr">
+						class="form-control" id="usr" value="<?= $post->auteurPost()?>">
 				</div>
 				<div class="form-group">
-					<label for="pwd">Titre du chapitre :</label> <input type="password"
-						class="form-control" id="pwd">
+					<label for="pwd">Titre du chapitre :</label> <input type="text"
+						class="form-control" id="pwd" value="<?= $post->titrePost()?>">
 				</div>
 				<div class="form-group">
 					<label for="comment">Contenu :</label>
-					<textarea rows="" cols=""></textarea>
+					<textarea rows="" cols=""><?= $post->contenuPost()?></textarea>
 					<!-- <textarea>Next, get a free Tiny Cloud API key!</textarea> -->
 				</div>
 			</div>
-			<a href="#" class="btn btn-warning"><span class="glyphicon glyphicon-download-alt"></span> Modifier</a>
+			<a href="index.php?action=modifierRoman&idPost=<?= $post->id()?>" class="btn btn-warning">
+			<input type="submit" name="modifierRoman" value="Modifier"><span class="glyphicon glyphicon-download-alt"></span></a>
+			</form>
 		</div>
-	</div>
-</div>
-<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-	<br>
-	<h2 class="sub-header">Liste des articles publiés</h2>
-	<div class="table-responsive">
-		<table class="table table-striped">
-			<thead>
-				<tr>
-					<th>N°Billet :</th>
-					<th>Auteur</th>
-					<th>Titre</th>
-					<th>Contenu</th>
-					<th>Commentaires</th>
-				</tr>
-			</thead>
-            <?php foreach ($posts as $post): ?>
-            <tbody>
-				<tr class="couleurLigneTableau"
-					onclick="document.location='index.php?'">
-					<td><?= $post->id() ?></td>
-					<td>J. Forteroche</td>
-					<td><?= $post->titrePost() ?></td>
-					<td><?= substr($post->contenuPost(), 0, 30) ?>...</td>
-					<td><?php if (isset($tableauNbCommentaire[$post->id()])) {
-                                echo $tableauNbCommentaire[$post->id()];
-                              } else {
-                                echo '0';
-                              } ?>
-                    </td>
-				</tr>
-			</tbody>
-			<?php endforeach; ?>
-        </table>
 	</div>
 </div>
