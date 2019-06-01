@@ -22,8 +22,8 @@
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
             <li class="active"><a href="index.php?action=espaceAdmin">Accueil <span class="sr-only">(current)</span></a></li>
-            <li><a href="index.php?action=pageAjoutRoman">Ajouter un article</a></li>
-            <li><a href="index.php?action=pageSupprimerRoman">Supprimer un article</a></li><br />
+            <li><a href="index.php?action=pageAjoutChapitre">Ajouter un chapitre</a></li>
+            <li><a href="index.php?action=pageSupprimerRoman">Supprimer un chapitre</a></li><br />
             <li><a href="index.php?action=pageCommentairesSignales">Commentaires signalés</a></li>
           </ul>
         </div>
@@ -32,12 +32,12 @@
 			<br/>
 		  <h2 class="sub-header">Vue globale</h2>
 		    <br/>
-          <h3 class="sub-header">Liste des articles publiés</h3>
+          <h3 class="sub-header">Liste des chapitres publiés</h3>
           <div class="table-responsive">
             <table class="table table-striped">
               <thead>
                 <tr>
-                  <th>N°Billet :</th>
+                  <th>N°Chapitre :</th>
                   <th>Auteur</th>
                   <th>Titre</th>
                   <th>Contenu</th>

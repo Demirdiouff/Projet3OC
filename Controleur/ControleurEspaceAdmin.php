@@ -28,39 +28,39 @@ class ControleurEspaceAdmin {
         ));
     }
     
-    public function pageAjoutRoman($msgErreurAjouterRoman = '', $msgValideAjouterRoman = '') {
+    public function pageAjoutChapitre($msgErreurAjouterChapitre = '', $msgValideAjouterChapitre = '') {
         if (!isset($_SESSION['isAdmin'])) {
             header("Location: index.php?");
         }
-        $vue = new Vue("PageAjoutRoman", "Page d'Administration - Ajouter un Chapitre");
-        $vue->genererPageEspaceAdmin(array('msgErreurAjouterRoman' => $msgErreurAjouterRoman, 'msgValideAjouterRoman' => $msgValideAjouterRoman));
+        $vue = new Vue("PageAjoutChapitre", "Page d'Administration - Ajouter un Chapitre");
+        $vue->genererPageEspaceAdmin(array('msgErreurAjouterChapitre' => $msgErreurAjouterChapitre, 'msgValideAjouterChapitre' => $msgValideAjouterChapitre));
     }
     
-    public function ajouterRoman() {
-        $msgErreurAjouterRoman = '';
-        $msgValideAjouterRoman = '';
-        if (isset($_POST['ajouterRoman']) && isset($_POST['auteurPost']) && isset($_POST['titrePost']) && isset($_POST['contenuPost'])) {
+    public function ajouterChapitre() {
+        $msgErreurAjouterChapitre = '';
+        $msgValideAjouterChapitre = '';
+        if (isset($_POST['ajouterChapitre']) && isset($_POST['auteurPost']) && isset($_POST['titrePost']) && isset($_POST['contenuPost'])) {
             $post = new Post([
                 'auteurPost' => $_POST['auteurPost'],
                 'titrePost' => $_POST['titrePost'],
                 'contenuPost' => $_POST['contenuPost']
             ]);
             if (!$post->auteurValide()) {
-                $msgErreurAjouterRoman = '<p style="color:red">Erreur : Le nom de l\'auteur ne peut être vide</p>';
-                $this->pageAjoutRoman($msgErreurAjouterRoman, '');
+                $msgErreurAjouterChapitre = '<p style="color:red">Erreur : Le nom de l\'auteur ne peut être vide</p>';
+                $this->pageAjoutChapitre($msgErreurAjouterChapitre, '');
             } elseif (!$post->titreValide()) {
-                $msgErreurAjouterRoman = '<p style="color:red">Erreur : Le titre du chapitre ne peut être vide</p>';
-                $this->pageAjoutRoman($msgErreurAjouterRoman, '');
+                $msgErreurAjouterChapitre = '<p style="color:red">Erreur : Le titre du chapitre ne peut être vide</p>';
+                $this->pageAjoutChapitre($msgErreurAjouterChapitre, '');
             } elseif (!$post->contenuValide()) {
-                $msgErreurAjouterRoman = '<p style="color:red">Erreur : Le contenu du chapitre ne peut être vide</p>';
-                $this->pageAjoutRoman($msgErreurAjouterRoman, '');
+                $msgErreurAjouterChapitre = '<p style="color:red">Erreur : Le contenu du chapitre ne peut être vide</p>';
+                $this->pageAjoutChapitre($msgErreurAjouterChapitre, '');
             } else {
                 $this->postManager->add($post);
-                $msgValideAjouterRoman = '<p style="color:green">Votre chapitre a bien été posté</p>';
-                $this->pageAjoutRoman('', $msgValideAjouterRoman);
+                $msgValideAjouterChapitre = '<p style="color:green">Votre chapitre a bien été posté</p>';
+                $this->pageAjoutChapitre('', $msgValideAjouterChapitre);
             }
         } else {
-            $this->pageAjoutRoman($msgErreurAjouterRoman, $msgValideAjouterRoman);
+            $this->pageAjoutChapitre($msgErreurAjouterChapitre, $msgValideAjouterChapitre);
         }
     }
     

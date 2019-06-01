@@ -28,9 +28,9 @@ if (false) $post = new Post();
 		<div class="col-sm-3 col-md-2 sidebar">
 			<ul class="nav nav-sidebar">
 				<li><a href="index.php?action=espaceAdmin">Accueil</a></li>
-				<li><a href="index.php?action=pageAjoutRoman">Ajouter un article</a></li>
-				<li class="active"><a href="#">Modifier un article <span class="sr-only">(current)</span></a></li>
-				<li><a href="index.php?action=pageSupprimerRoman">Supprimer un article</a></li><br />
+				<li><a href="index.php?action=pageAjoutChapitre">Ajouter un chapitre</a></li>
+				<li class="active"><a href="#">Modifier un chapitre<span class="sr-only">(current)</span></a></li>
+				<li><a href="index.php?action=pageSupprimerRoman">Supprimer un chapitre</a></li><br />
 				<li><a href="index.php?action=pageCommentairesSignales">Commentaires signalés</a></li>
 			</ul>
 		</div>

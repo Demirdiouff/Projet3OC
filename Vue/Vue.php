@@ -68,7 +68,7 @@ class Vue {
         echo $vue;
     }
     
-    public function genererPageBillet($donnees) {
+    public function genererPageChapitre($donnees) {
         // Génération de la partie spécifique de la vue, semblable a la fonction generer mais pour un autre template et styleBillet.css
         $contenu = $this->genererfichier($this->fichier, $donnees);
         // Génération du gabarit commun utilisant la partie spécifique

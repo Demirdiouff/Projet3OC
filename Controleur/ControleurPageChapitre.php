@@ -27,7 +27,7 @@ class ControleurPageChapitre {
         $post = $this->postManager->getPost($idPost);
         $commentaires = $this->commentaireManager->getCommentaire($idPost);
         $vue = new Vue("PageChapitre", "Roman - ".'[#'.$idPost.'] ' . $titrePost);
-        $vue->genererPageBillet(array(
+        $vue->genererPageChapitre(array(
             'post' => $post,
             'commentaires' => $commentaires
         ));

@@ -26,14 +26,14 @@
 		<div class="col-sm-3 col-md-2 sidebar">
 			<ul class="nav nav-sidebar">
 				<li><a href="index.php?action=espaceAdmin">Accueil</a></li>
-				<li class="active"><a href="index.php?action=pageAjoutRoman">Ajouter un article<span class="sr-only">(current)</span></a></li>
-				<li><a href="index.php?action=pageSupprimerRoman">Supprimer un article</a></li><br />
+				<li class="active"><a href="index.php?action=pageAjoutChapitre">Ajouter un chapitre<span class="sr-only">(current)</span></a></li>
+				<li><a href="index.php?action=pageSupprimerRoman">Supprimer un chapitre</a></li><br />
 				<li><a href="index.php?action=pageCommentairesSignales">Commentaires signalés</a></li>
 			</ul>
 		</div>
 		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 			<h2 class="sub-header">Publier un chapitre</h2>
-			<form method="post" action="index.php?action=ajouterRoman">
+			<form method="post" action="index.php?action=ajouterChapitre">
 			<div class="table-responsive">
 				<div class="form-group">
 					<label for="usr">Auteur :</label> 
@@ -49,15 +49,15 @@
 				</div>
 				
 			</div>
-			<a href="index.php?action=ajouterRoman" class="btn btn-success">
-			<input type="submit" name="ajouterRoman" value="Publier"><span class="glyphicon glyphicon-plus-sign"></span></a>
+			<a href="index.php?action=ajouterChapitre" class="btn btn-success">
+			<input type="submit" name="ajouterChapitre" value="Publier"><span class="glyphicon glyphicon-plus-sign"></span></a>
 			</form>
 <?php
-if (!empty($msgErreurAjouterRoman)) {
-    echo $msgErreurAjouterRoman;
+if (!empty($msgErreurAjouterChapitre)) {
+    echo $msgErreurAjouterChapitre;
 }
-if (!empty($msgValideAjouterRoman)) {
-    echo $msgValideAjouterRoman;
+if (!empty($msgValideAjouterChapitre)) {
+    echo $msgValideAjouterChapitre;
 }
 ?>
 		</div>

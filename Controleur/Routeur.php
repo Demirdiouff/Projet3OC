@@ -37,7 +37,7 @@ class Routeur
     
     private $ctrlEspaceAdmin;
     
-    private $ctrlPageAjoutRoman;
+    private $ctrlPageAjoutChapitre;
     
     private $ctrlAjoutRoman;
     
@@ -118,13 +118,13 @@ class Routeur
                     $this->ctrlEspaceAdmin = new ControleurEspaceAdmin();
                     $this->ctrlEspaceAdmin->espaceAdmin();
                     break;
-                case 'pageAjoutRoman': 
+                case 'pageAjoutChapitre': 
                     $this->ctrlPageAjoutRoman = new ControleurEspaceAdmin();
-                    $this->ctrlPageAjoutRoman->pageAjoutRoman();
+                    $this->ctrlPageAjoutRoman->pageAjoutChapitre();
                     break;
-                case 'ajouterRoman':
+                case 'ajouterChapitre':
                     $this->ctrlAjoutRoman = new ControleurEspaceAdmin();
-                    $this->ctrlAjoutRoman->ajouterRoman();
+                    $this->ctrlAjoutRoman->ajouterChapitre();
                     break;
                 case 'pageModifierRoman':
                     $this->ctrlPageModifierRoman = new ControleurEspaceAdmin();
