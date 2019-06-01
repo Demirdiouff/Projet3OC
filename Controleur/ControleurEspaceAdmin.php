@@ -64,7 +64,7 @@ class ControleurEspaceAdmin {
         }
     }
     
-    public function pageModifierRoman($msgErreurModifRoman = '', $msgValideModifRoman = '') {
+    public function pageModifierChapitre($msgErreurModifChapitre = '', $msgValideModifChapitre = '') {
         if (!isset($_SESSION['isAdmin'])) {
             header("Location:index.php?");
         }
@@ -73,17 +73,17 @@ class ControleurEspaceAdmin {
             $titrePost = $_REQUEST['titrePost'];
         }
         $post = $this->postManager->getPost($idPost);
-        $vue = new Vue("PageModifierRoman", "Modification : " . $titrePost);
+        $vue = new Vue("PageModifierChapitre", "Modification : " . $titrePost);
         $vue->genererPageEspaceAdmin(array(
-            'msgErreurModifRoman' => $msgErreurModifRoman,
-            'msgValideModifRoman' => $msgValideModifRoman,
+            'msgErreurModifChapitre' => $msgErreurModifChapitre,
+            'msgValideModifRoman' => $msgValideModifChapitre,
             'post' => $post
         ));
     }
     
-    public function modifierRoman() {
-        $msgErreurModifRoman = '';
-        $msgValideModifPost = '';
+    public function modifierChapitre() {
+        $msgErreurModifChapitre = '';
+        $msgValideModifChapitre = '';
         if (isset($_POST['modifierRoman']) && isset($_POST['auteurPost']) && isset($_POST['titrePost']) && isset($_POST['contenuPost']) && ($_GET['idPost'])) {
             $post = new Post([
                 'auteurPost' => $_POST['auteurPost'],
@@ -93,21 +93,21 @@ class ControleurEspaceAdmin {
             ]);
             if (!$post->auteurValide()) {
                 echo 'erreur auteur';
-                $msgErreurModifRoman = '<p style="color:red">Erreur : Le nom de l\'auteur ne peut être vide</p>';
-                $this->espaceAdmin($msgErreurModifRoman, '');
+                $msgErreurModifChapitre = '<p style="color:red">Erreur : Le nom de l\'auteur ne peut être vide</p>';
+                $this->espaceAdmin($msgErreurModifChapitre, '');
             } elseif (!$post->titreValide()) {
                 echo 'erreur titre';
-                $msgErreurModifRoman = '<p style="color:red">Erreur : Le titre du chapitre ne peut être vide</p>';
-                $this->espaceAdmin($msgErreurModifRoman, '');
+                $msgErreurModifChapitre = '<p style="color:red">Erreur : Le titre du chapitre ne peut être vide</p>';
+                $this->espaceAdmin($msgErreurModifChapitre, '');
             } elseif (!$post->contenuValide()) {
                 echo 'erreur contenu';
-                $msgErreurModifRoman = '<p style="color:red">Erreur : Le contenu du chapitre ne peut être vide</p>';
-                $this->espaceAdmin($msgErreurModifRoman, '');
+                $msgErreurModifChapitre = '<p style="color:red">Erreur : Le contenu du chapitre ne peut être vide</p>';
+                $this->espaceAdmin($msgErreurModifChapitre, '');
             } else {
                 echo 'ajout réussi';
                $this->postManager->update($post);
-               $msgValideModifPost = '<p style="color:green">Votre chapitre a bien été mis à jour</p>';
-               $this->espaceAdmin('', $msgValideModifPost);
+               $msgValideModifChapitre = '<p style="color:green">Votre chapitre a bien été mis à jour</p>';
+               $this->espaceAdmin('', $msgValideModifChapitre);
             }
         } else {
             echo 'rien passé';
@@ -115,26 +115,26 @@ class ControleurEspaceAdmin {
         }
     }
     
-    public function pageSupprimerRoman() {
+    public function pageSupprimerChapitre() {
         if (!isset($_SESSION['isAdmin'])) {
             header("Location:index.php?");
         }
         $posts = $this->postManager->getPosts();
         $tableauNbCommentaire = $this->commentaireManager->getTableauNombreCommentaires();
-        $vue = new Vue("PageSupprimerRoman", "Page d'Administration - Supprimer un Roman");
+        $vue = new Vue("PageSupprimerChapitre", "Page d'Administration - Supprimer un Chapitre");
         $vue->genererPageEspaceAdmin(array(
             'posts' => $posts,
             'tableauNbCommentaire' => $tableauNbCommentaire
         ));
     }
     
-    public function supprimerRoman() {
+    public function supprimerChapitre() {
         if (isset($_REQUEST['idPost'])) {
             $idPost = $_REQUEST['idPost'];
         }
         $post = $this->postManager->getPost($idPost);
         $this->postManager->delete($post);
-        $this->pageSupprimerRoman();
+        $this->pageSupprimerChapitre();
     }
     
     public function pageCommentairesSignales() {

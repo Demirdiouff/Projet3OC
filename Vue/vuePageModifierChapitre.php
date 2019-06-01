@@ -30,13 +30,13 @@ if (false) $post = new Post();
 				<li><a href="index.php?action=espaceAdmin">Accueil</a></li>
 				<li><a href="index.php?action=pageAjoutChapitre">Ajouter un chapitre</a></li>
 				<li class="active"><a href="#">Modifier un chapitre<span class="sr-only">(current)</span></a></li>
-				<li><a href="index.php?action=pageSupprimerRoman">Supprimer un chapitre</a></li><br />
+				<li><a href="index.php?action=pageSupprimerChapitre">Supprimer un chapitre</a></li><br />
 				<li><a href="index.php?action=pageCommentairesSignales">Commentaires signalés</a></li>
 			</ul>
 		</div>
 		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 			<h2 class="sub-header">Modification "<strong><?= $post->titrePost()?></strong>"</h2>
-			<form method="post" action="index.php?action=modifierRoman">
+			<form method="post" action="index.php?action=modifierChapitre">
 			<div class="table-responsive">
 				<div class="form-group">
 					<label for="usr">Auteur :</label> <input type="text"
@@ -52,8 +52,8 @@ if (false) $post = new Post();
 					<!-- <textarea>Next, get a free Tiny Cloud API key!</textarea> -->
 				</div>
 			</div>
-			<a href="index.php?action=modifierRoman&idPost=<?= $post->id()?>" class="btn btn-warning">
-			<input type="submit" name="modifierRoman" value="Modifier"><span class="glyphicon glyphicon-download-alt"></span></a>
+			<a href="index.php?action=modifierChapitre&idPost=<?= $post->id()?>" class="btn btn-warning">
+			<input type="submit" name="modifierChapitre" value="Modifier"><span class="glyphicon glyphicon-download-alt"></span></a>
 			</form>
 		</div>
 	</div>

@@ -41,13 +41,13 @@ class Routeur
     
     private $ctrlAjoutRoman;
     
-    private $ctrlPageModifierRoman;
+    private $ctrlPageModifierChapitre;
     
-    private $ctrlModifierRoman;
+    private $ctrlModifierChapitre;
     
-    private $ctrlPageSupprimerRoman;
+    private $ctrlPageSupprimerChapitre;
     
-    private $ctrlSupprimerRoman;
+    private $ctrlSupprimerChapitre;
     
     private $ctrlSignalementCommentaire;
     
@@ -126,21 +126,21 @@ class Routeur
                     $this->ctrlAjoutRoman = new ControleurEspaceAdmin();
                     $this->ctrlAjoutRoman->ajouterChapitre();
                     break;
-                case 'pageModifierRoman':
-                    $this->ctrlPageModifierRoman = new ControleurEspaceAdmin();
-                    $this->ctrlPageModifierRoman->pageModifierRoman();
+                case 'pageModifierChapitre':
+                    $this->ctrlPageModifierChapitre = new ControleurEspaceAdmin();
+                    $this->ctrlPageModifierChapitre->pageModifierChapitre();
                     break;
-                case 'modifierRoman':
-                    $this->ctrlModifierRoman = new ControleurEspaceAdmin();
-                    $this->ctrlModifierRoman->modifierRoman();
+                case 'modifierChapitre':
+                    $this->ctrlModifierChapitre = new ControleurEspaceAdmin();
+                    $this->ctrlModifierChapitre->modifierChapitre();
                     break;
-                case 'pageSupprimerRoman':
-                    $this->ctrlPageSupprimerRoman = new ControleurEspaceAdmin();
-                    $this->ctrlPageSupprimerRoman->pageSupprimerRoman();
+                case 'pageSupprimerChapitre':
+                    $this->ctrlPageSupprimerChapitre = new ControleurEspaceAdmin();
+                    $this->ctrlPageSupprimerChapitre->pageSupprimerChapitre();
                     break;
-                case 'supprimerRoman':
-                    $this->ctrlSupprimerRoman = new ControleurEspaceAdmin();
-                    $this->ctrlSupprimerRoman->supprimerRoman();
+                case 'supprimerChapitre':
+                    $this->ctrlSupprimerChapitre = new ControleurEspaceAdmin();
+                    $this->ctrlSupprimerChapitre->supprimerChapitre();
                     break;
                 case 'signalementCommentaire': 
                     $this->ctrlSignalementCommentaire = new ControleurPageChapitre();

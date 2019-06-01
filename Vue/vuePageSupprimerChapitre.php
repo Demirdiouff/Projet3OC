@@ -23,7 +23,7 @@
           <ul class="nav nav-sidebar">
             <li><a href="index.php?action=espaceAdmin">Accueil</a></li>
             <li><a href="index.php?action=pageAjoutChapitre">Ajouter un chapitre</a></li>
-            <li class="active"><a href="index.php?action=pageSupprimerRoman">Supprimer un chapitre<span class="sr-only">(current)</span></a></li><br />
+            <li class="active"><a href="index.php?action=pageSupprimerChapitre">Supprimer un chapitre<span class="sr-only">(current)</span></a></li><br />
             <li><a href="index.php?action=pageCommentairesSignales">Commentaires signalés</a></li>
           </ul>
         </div>
@@ -56,7 +56,7 @@
                         } else {
                         echo '0';
                         }?></td>
-                  <td><a href="<?= "index.php?action=supprimerRoman&idPost=" . $post->id() ?> "class="btn btn-danger" onclick="return confirm('Etes-vous sûr de vouloir supprimer ce chapitre ?');"><span class="glyphicon glyphicon-minus-sign"></span> Supprimer</a></td>
+                  <td><a href="<?= "index.php?action=supprimerChapitre&idPost=" . $post->id() ?> "class="btn btn-danger" onclick="return confirm('Etes-vous sûr de vouloir supprimer ce chapitre ?');"><span class="glyphicon glyphicon-minus-sign"></span> Supprimer</a></td>
                 </tr>
               </tbody>
 			  <?php endforeach; ?>

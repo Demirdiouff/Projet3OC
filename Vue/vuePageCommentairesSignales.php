@@ -23,7 +23,7 @@
           <ul class="nav nav-sidebar">
             <li><a href="index.php?action=espaceAdmin">Accueil</a></li>
             <li><a href="index.php?action=pageAjoutChapitre">Ajouter un chapitre</a></li>
-            <li><a href="index.php?action=pageSupprimerRoman">Supprimer un chapitre</a></li><br />
+            <li><a href="index.php?action=pageSupprimerChapitre">Supprimer un chapitre</a></li><br />
             <li class="active"><a href="index.php?action=pageCommentairesSignales">Commentaires signalés<span class="sr-only">(current)</span></a></li>
           </ul>
         </div>
