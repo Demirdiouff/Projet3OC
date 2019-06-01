@@ -54,6 +54,10 @@ if (false) $post = new Post();
 			<a href="index.php?action=modifierChapitre&idPost=<?= $post->id()?>" class="btn btn-warning">
 			<input type="submit" name="modifierChapitre" value="Modifier"><span class="glyphicon glyphicon-download-alt"></span></a>
 			</form>
+<?php
+if (!empty($msgErreurModifChapitre)) {
+echo $msgErreurModifChapitre;
+} ?>
 		</div>
 	</div>
 </div>

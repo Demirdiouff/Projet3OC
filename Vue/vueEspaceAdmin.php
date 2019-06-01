@@ -29,6 +29,11 @@
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
           <h1 class="page-header">Page d'Administration</h1>
+<?php
+if (!empty($msgValideModifChapitre)) {
+    echo $msgValideModifChapitre;
+}
+?>
 			<br/>
 		  <h2 class="sub-header">Vue globale</h2>
 		    <br/>
