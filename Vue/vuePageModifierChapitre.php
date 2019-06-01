@@ -17,8 +17,7 @@ if (false) $post = new Post();
 		</div>
 		<div id="navbar" class="navbar-collapse collapse">
 			<ul class="nav navbar-nav navbar-right">
-				<li><p class="affichageNom">Bienvenue <?= $_SESSION['nomUtilisateur'] ?> - <a
-							href="index.php?action=deconnexion">Déconnexion</a></li>
+				<li><p class="affichageNom">Bienvenue <?= $_SESSION['nomUtilisateur'] ?> - <a href="index.php?action=deconnexion">Déconnexion</a></li>
 			</ul>
 		</div>
 	</div>

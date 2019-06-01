@@ -56,7 +56,7 @@
                         } else {
                         echo '0';
                         }?></td>
-                  <td><a href="index.php?action=pageModifierRoman&idPost=<?= $post->id()?>" class="btn btn-warning"><span class="glyphicon glyphicon-download-alt"></span> Modifier</a></td>
+                  <td><a href="index.php?action=pageModifierChapitre&idPost=<?= $post->id()?>" class="btn btn-warning"><span class="glyphicon glyphicon-download-alt"></span> Modifier</a></td>
                 </tr>
               </tbody>
 			  <?php endforeach; ?>
