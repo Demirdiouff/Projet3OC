@@ -18,6 +18,7 @@ class ControleurEspaceAdmin {
     public function espaceAdmin() {
         if (!isset($_SESSION['isAdmin'])) {
             header("Location: index.php?");
+            exit();
         }
         $posts = $this->postManager->getPosts();
         $tableauNbCommentaire = $this->commentaireManager->getTableauNombreCommentaires();
@@ -31,6 +32,7 @@ class ControleurEspaceAdmin {
     public function pageAjoutChapitre($msgErreurAjouterChapitre = '', $msgValideAjouterChapitre = '') {
         if (!isset($_SESSION['isAdmin'])) {
             header("Location: index.php?");
+            exit();
         }
         $vue = new Vue("PageAjoutChapitre", "Page d'Administration - Ajouter un Chapitre");
         $vue->genererPageEspaceAdmin(array('msgErreurAjouterChapitre' => $msgErreurAjouterChapitre, 'msgValideAjouterChapitre' => $msgValideAjouterChapitre));
@@ -67,6 +69,7 @@ class ControleurEspaceAdmin {
     public function pageModifierChapitre($msgErreurModifChapitre = '', $msgValideModifChapitre = '') {
         if (!isset($_SESSION['isAdmin'])) {
             header("Location:index.php?");
+            exit();
         }
         if (isset($_REQUEST['idPost'])) {
             $idPost = $_REQUEST['idPost'];
@@ -118,6 +121,7 @@ class ControleurEspaceAdmin {
     public function pageSupprimerChapitre() {
         if (!isset($_SESSION['isAdmin'])) {
             header("Location:index.php?");
+            exit();
         }
         $posts = $this->postManager->getPosts();
         $tableauNbCommentaire = $this->commentaireManager->getTableauNombreCommentaires();
@@ -140,6 +144,7 @@ class ControleurEspaceAdmin {
     public function pageCommentairesSignales() {
         if (!isset($_SESSION['isAdmin'])) {
             header("Location:index.php?");
+            exit();
         }
         $posts = $this->postManager->getPosts();
         $commentaires = $this->commentaireManager->getCommentaires();
