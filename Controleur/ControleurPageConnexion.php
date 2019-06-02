@@ -20,6 +20,7 @@ class ControleurPageConnexion {
     public function pageConnexion($msgErreurInscription = '', $msgValideInscription = '', $msgErreurConnexion = '', $msgValideConnexion = '') {
         if (isset($_SESSION['nomUtilisateur'])) {
             header("Location: index.php?action=espaceAdmin");
+            exit();
         }
         $vue = new Vue("PageConnexion", "Espace d'administration");
         $vue->genererPageConnexion(array('msgErreurInscription' => $msgErreurInscription, 'msgValideInscription' => $msgValideInscription, 'msgErreurConnexion' => $msgErreurConnexion, 'msgValideConnexion' => $msgValideConnexion));
@@ -61,8 +62,10 @@ class ControleurPageConnexion {
             if ($user->isAdmin() == 1) {
                 $_SESSION['isAdmin'] = $user->isAdmin();
                 header("Location: index.php?action=espaceAdmin");
+                exit();
             } else {
                 header("Location: index.php?action=pageRoman");
+                exit();
             }
         } else {
             $msgErreurConnexion = '<p style="color:red">Impossible de se connecter, mot de passe ou identifiant incorrect.</p>';
