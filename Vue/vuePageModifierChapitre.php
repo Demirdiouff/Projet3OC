@@ -34,24 +34,24 @@ if (false) $post = new Post();
 			</ul>
 		</div>
 		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-			<h2 class="sub-header">Modification "<strong><?= $post->titrePost()?></strong>"</h2>
+			<h2 class="sub-header">Modification "<strong><?= $post->titrePost() ?></strong>"</h2>
 			<form method="post" action="index.php?action=modifierChapitre">
 			<div class="table-responsive">
 				<div class="form-group">
-					<label for="usr">Auteur :</label> <input type="text"
-						class="form-control" id="usr" value="<?= $post->auteurPost()?>">
+					<label for="usr">Auteur :</label> 
+					<input type="text" class="form-control" id="usr" name="auteurPost" value="<?= htmlspecialchars($post->auteurPost()) ?>">
 				</div>
 				<div class="form-group">
-					<label for="pwd">Titre du chapitre :</label> <input type="text"
-						class="form-control" id="pwd" value="<?= $post->titrePost()?>">
+					<label for="pwd">Titre du chapitre :</label> 
+					<input type="text" class="form-control" id="pwd" name="titrePost" value="<?= htmlspecialchars($post->titrePost()) ?>">
 				</div>
 				<div class="form-group">
 					<label for="comment">Contenu :</label>
-					<textarea rows="" cols=""><?= $post->contenuPost()?></textarea>
+					<textarea name="contenuPost"><?= htmlspecialchars($post->contenuPost()) ?></textarea>
 					<!-- <textarea>Next, get a free Tiny Cloud API key!</textarea> -->
 				</div>
 			</div>
-			<a href="index.php?action=modifierChapitre&idPost=<?= $post->id()?>" class="btn btn-warning">
+			<a href="index.php?action=modifierChapitre&idPost=<?= $post->id() ?>" class="btn btn-warning">
 			<input type="submit" name="modifierChapitre" value="Modifier"><span class="glyphicon glyphicon-download-alt"></span></a>
 			</form>
 <?php
