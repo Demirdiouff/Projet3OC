@@ -87,7 +87,7 @@ class ControleurEspaceAdmin {
     public function modifierChapitre() {
         $msgErreurModifChapitre = '';
         $msgValideModifChapitre = '';
-        if (isset($_POST['modifierChapitre']) && isset($_POST['auteurPost']) && isset($_POST['titrePost']) && isset($_POST['contenuPost']) && ($_GET['idPost'])) {
+        if (isset($_POST['modifierChapitre'], $_POST['auteurPost'], $_POST['titrePost'], $_POST['contenuPost'], $_GET['idPost']) && is_int($_GET['idPost'])){
             $post = new Post([
                 'auteurPost' => $_POST['auteurPost'],
                 'titrePost' => $_POST['titrePost'],
