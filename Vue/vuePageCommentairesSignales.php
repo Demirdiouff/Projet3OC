@@ -12,6 +12,10 @@
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
             <li><p class="affichageNom">Bienvenue <?= $_SESSION['nomUtilisateur'] ?> - <a href="index.php?action=deconnexion">Déconnexion</a></li>
+            <li><a href="index.php?action=espaceAdmin">Accueil</a></li>
+            <li><a href="index.php?action=pageAjoutChapitre">Ajouter un chapitre</a></li>
+            <li><a href="index.php?action=pageSupprimerChapitre">Supprimer un chapitre</a></li>
+            <li><a href="index.php?action=pageCommentairesSignales">Commentaires signalés</a></li>
           </ul>
         </div>
       </div>

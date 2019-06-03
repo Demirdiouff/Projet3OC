@@ -18,6 +18,10 @@ if (false) $post = new Post();
 		<div id="navbar" class="navbar-collapse collapse">
 			<ul class="nav navbar-nav navbar-right">
 				<li><p class="affichageNom">Bienvenue <?= $_SESSION['nomUtilisateur'] ?> - <a href="index.php?action=deconnexion">Déconnexion</a></li>
+				<li><a href="index.php?action=espaceAdmin">Accueil</a></li>
+            	<li><a href="index.php?action=pageAjoutChapitre">Ajouter un chapitre</a></li>
+            	<li><a href="index.php?action=pageSupprimerChapitre">Supprimer un chapitre</a></li>
+            	<li><a href="index.php?action=pageCommentairesSignales">Commentaires signalés</a></li>
 			</ul>
 		</div>
 	</div>
@@ -35,7 +39,7 @@ if (false) $post = new Post();
 		</div>
 		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 			<h2 class="sub-header">Modification "<strong><?= $post->titrePost() ?></strong>"</h2>
-			<form method="post" action="index.php?action=modifierChapitre">
+			<form method="post" action="index.php?action=modifierChapitre&idPost=<?= $post->id() ?>">
 			<div class="table-responsive">
 				<div class="form-group">
 					<label for="usr">Auteur :</label> 
@@ -52,7 +56,7 @@ if (false) $post = new Post();
 				</div>
 			</div>
 			<a href="index.php?action=modifierChapitre&idPost=<?= $post->id() ?>" class="btn btn-warning">
-			<input type="submit" name="modifierChapitre" value="Modifier"><span class="glyphicon glyphicon-download-alt"></span></a>
+			<input class="inputModif" type="submit" name="modifierChapitre" value="Modifier"><span class="glyphicon glyphicon-download-alt"></span></a>
 			</form>
 <?php
 if (!empty($msgErreurModifChapitre)) {

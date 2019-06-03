@@ -12,6 +12,10 @@
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
             <li><p class="affichageNom">Bienvenue <?= $_SESSION['nomUtilisateur'] ?> - <a href="index.php?action=deconnexion">Déconnexion</a></li>
+            <li><a href="index.php?action=espaceAdmin">Accueil</a></li>
+            <li><a href="index.php?action=pageAjoutChapitre">Ajouter un chapitre</a></li>
+            <li><a href="index.php?action=pageSupprimerChapitre">Supprimer un chapitre</a></li>
+            <li><a href="index.php?action=pageCommentairesSignales">Commentaires signalés</a></li>
           </ul>
         </div>
       </div>
@@ -29,12 +33,12 @@
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
           <h1 class="page-header">Page d'Administration</h1>
-<?php
-if (!empty($msgValideModifChapitre)) {
-    echo $msgValideModifChapitre;
-}
-?>
 			<br/>
+		  <?php
+          if (!empty($msgValideModifChapitre)) {
+          echo $msgValideModifChapitre;
+          }
+          ?>
 		  <h2 class="sub-header">Vue globale</h2>
 		    <br/>
           <h3 class="sub-header">Liste des chapitres publiés</h3>
@@ -51,7 +55,7 @@ if (!empty($msgValideModifChapitre)) {
               </thead>
               <?php foreach ($posts as $post): ?>
               <tbody>
-                <tr class="couleurLigneTableau" onclick="document.location='index.php?'">
+                <tr class="couleurLigneTableau" onclick="">
                   <td><?= $post->id() ?></td>
                   <td><?= $post->auteurPost() ?></td>
                   <td><?= $post->titrePost() ?></td>
