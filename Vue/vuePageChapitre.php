@@ -2,13 +2,15 @@
 <?php if (false) $commentaires = new Commentaire(); ?>
 <div class="container">
 	<div class="blog-header">
+		<a href="index.php?action=pageRoman">&larr; Revenir à la liste des romans</a>
+		<br /><br />
 		<h1 class="blog-title"><?= $post->titrePost(); ?></h1>
 		<br />
 	</div>
 	<div class="row">
 		<div class="col-sm-8 blog-main">
 			<div class="blog-post">
-				<p class="blog-post-meta"><?= $post->datePost(); ?> par <a href="index.php?action=propos">Jean Forteroche</a></p>
+				<p class="blog-post-meta"><?= $post->datePost(); ?> par <a href="index.php?action=pagePropos">Jean Forteroche</a></p>
 				<p> <?= $post->contenuPost(); ?></p>
 			</div>
 			<hr />

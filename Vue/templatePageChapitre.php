@@ -40,7 +40,7 @@
   <?= $contenu; ?>
 
     <footer class="blog-footer">
-        <a href="#">Retourner en haut</a> - <a href="index.php?action=roman">Revenir à la liste des romans</a> <br /><hr>
+        <a href="#">&uarr;<br />Retourner en haut</a> <br /><hr>
         <?php if (isset($_SESSION['nomUtilisateur'])) {
             echo "<p>Salutations " . $_SESSION['nomUtilisateur'] . "</p>"; ?>
             <p><a href="index.php?action=deconnexion">Déconnexion</a></p>

@@ -62,7 +62,7 @@
                 echo "<p class='affichageNomSurPageRoman'>Salutations " . $_SESSION['nomUtilisateur'] . "</p>"; ?>
                 <p class="affichageNomSurPageRoman"><a href="index.php?action=deconnexion">Déconnexion</a></p>
                 <?php if (isset($_SESSION['isAdmin'])) { ?>
-                	  <p><a href="index.php?action=espaceAdmin">Espace d'administration</a></p>
+                	  <p class="affichageNomSurPageRoman"><a href="index.php?action=espaceAdmin">Espace d'administration</a></p>
                 	  <?php } ?>
             <?php } else { ?>
                  <p class="connexion"><a href="index.php?action=pageConnexion">Connexion</a></p>
