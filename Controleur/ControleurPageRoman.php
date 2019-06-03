@@ -15,7 +15,7 @@ class ControleurPageRoman {
     // Affiche la liste de tous les billets du blog
     public function roman() {
         $posts = $this->manager->getPosts();
-        $vue = new Vue("PageRoman", "Liste des Romans");
+        $vue = new Vue("PageRoman", "Roman");
         $vue->genererPageRoman(array('posts' => $posts));
     }
 }

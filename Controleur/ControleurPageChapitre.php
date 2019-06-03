@@ -18,7 +18,7 @@ class ControleurPageChapitre {
         $this->commentaireManager = new CommentaireManager();
     }
     
-    // Affiche les détails sur les romans
+    // Affiche les chapitres du roman
     public function post($msgErreur = '') {
        if (isset($_REQUEST['idPost'])) {
             $idPost = $_REQUEST['idPost'];
@@ -26,7 +26,7 @@ class ControleurPageChapitre {
         }
         $post = $this->postManager->getPost($idPost);
         $commentaires = $this->commentaireManager->getCommentaire($idPost);
-        $vue = new Vue("PageChapitre", "Roman - ".'[#'.$idPost.'] ' . $titrePost);
+        $vue = new Vue("PageChapitre", "Chapitre - ".'[#'.$idPost.'] ' . $titrePost);
         $vue->genererPageChapitre(array(
             'post' => $post,
             'commentaires' => $commentaires
@@ -50,24 +50,13 @@ class ControleurPageChapitre {
                 $this->post($msgErreur);
             }
         }
-        //Sauvegarde du commentaire
-        // Sauvegarde du commentaire
-//         $this->commentaire->ajouterCommentaire($auteur, $contenu, $idBillet);
-//         // Actualisation de l'affichage du billet
-//         $this->billet($idBillet);
     }
     
+    // Permet de signaler un commentaire
     public function signalerCommentaire() {
         if (isset($_GET['idCommentaire'])) {
             $idCommentaire = $_GET['idCommentaire'];
             $this->commentaireManager->updateSignalementCommentaire($idCommentaire);
-//             if ($commentaireSignale == true) {
-//                 $msgValide = '<p style="color:green">Le commentaire est bien signalé.</p>';
-//                 $this->commenter($msgValide);
-//             } else {
-//                 $msgErreur = '<p style="color:red">Erreur sur le signalement du commentaire.</p>';
-//                 $this->commenter($msgErreur);
-//             }
         }
         $this->post();
     }
