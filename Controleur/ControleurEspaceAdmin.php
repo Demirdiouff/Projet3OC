@@ -15,7 +15,7 @@ class ControleurEspaceAdmin {
     }
     
     // Affiche la liste de tous les billets du blog
-    public function espaceAdmin() {
+    public function espaceAdmin($msgValideModifChapitre = '') {
         if (!isset($_SESSION['isAdmin'])) {
             header("Location: index.php?");
             exit();
@@ -24,6 +24,7 @@ class ControleurEspaceAdmin {
         $tableauNbCommentaire = $this->commentaireManager->getTableauNombreCommentaires();
         $vue = new Vue("EspaceAdmin", "Page d'Administration - Accueil");
         $vue->genererPageEspaceAdmin(array(
+            'msgValideModifChapitre' => $msgValideModifChapitre,
             'posts' => $posts,
             'tableauNbCommentaire' => $tableauNbCommentaire
         ));
@@ -66,20 +67,18 @@ class ControleurEspaceAdmin {
         }
     }
     
-    public function pageModifierChapitre($msgErreurModifChapitre = '', $msgValideModifChapitre = '') {
+    public function pageModifierChapitre($msgErreurModifChapitre = '') {
         if (!isset($_SESSION['isAdmin'])) {
             header("Location:index.php?");
             exit();
         }
         if (isset($_REQUEST['idPost'])) {
             $idPost = $_REQUEST['idPost'];
-            $titrePost = $_REQUEST['titrePost'];
         }
         $post = $this->postManager->getPost($idPost);
-        $vue = new Vue("PageModifierChapitre", "Modification : " . $titrePost);
+        $vue = new Vue("PageModifierChapitre", "Modification : ");
         $vue->genererPageEspaceAdmin(array(
             'msgErreurModifChapitre' => $msgErreurModifChapitre,
-            'msgValideModifRoman' => $msgValideModifChapitre,
             'post' => $post
         ));
     }
@@ -87,7 +86,7 @@ class ControleurEspaceAdmin {
     public function modifierChapitre() {
         $msgErreurModifChapitre = '';
         $msgValideModifChapitre = '';
-        if (isset($_POST['modifierChapitre'], $_POST['auteurPost'], $_POST['titrePost'], $_POST['contenuPost'], $_GET['idPost']) && is_int($_GET['idPost'])){
+        if (isset($_POST['modifierChapitre'], $_POST['auteurPost'], $_POST['titrePost'], $_POST['contenuPost'], $_GET['idPost'])){
             $post = new Post([
                 'auteurPost' => $_POST['auteurPost'],
                 'titrePost' => $_POST['titrePost'],
@@ -95,25 +94,20 @@ class ControleurEspaceAdmin {
                 'idPost' => $_GET['idPost']
             ]);
             if (!$post->auteurValide()) {
-                echo 'erreur auteur';
                 $msgErreurModifChapitre = '<p style="color:red">Erreur : Le nom de l\'auteur ne peut être vide</p>';
-                $this->espaceAdmin($msgErreurModifChapitre, '');
+                $this->pageModifierChapitre($msgErreurModifChapitre);
             } elseif (!$post->titreValide()) {
-                echo 'erreur titre';
                 $msgErreurModifChapitre = '<p style="color:red">Erreur : Le titre du chapitre ne peut être vide</p>';
-                $this->espaceAdmin($msgErreurModifChapitre, '');
+                $this->pageModifierChapitre($msgErreurModifChapitre);
             } elseif (!$post->contenuValide()) {
-                echo 'erreur contenu';
                 $msgErreurModifChapitre = '<p style="color:red">Erreur : Le contenu du chapitre ne peut être vide</p>';
-                $this->espaceAdmin($msgErreurModifChapitre, '');
+                $this->pageModifierChapitre($msgErreurModifChapitre);
             } else {
-                echo 'ajout réussi';
                $this->postManager->update($post);
                $msgValideModifChapitre = '<p style="color:green">Votre chapitre a bien été mis à jour</p>';
-               $this->espaceAdmin('', $msgValideModifChapitre);
+               $this->espaceAdmin($msgValideModifChapitre);
             }
         } else {
-            echo 'rien passé';
             $this->espaceAdmin();
         }
     }
