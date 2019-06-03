@@ -79,6 +79,9 @@ body {
     padding-right: 40px;
     padding-left: 40px;
   }
+  .navbar-inverse .navbar-nav>li>a {
+  	display: none;
+  }
 }
 .main .page-header {
   margin-top: 0;
@@ -129,6 +132,7 @@ h2.sub-header {
 }
 .affichageNom {
 	color: white;
+	margin: 12px 10px 10px;
 }
 tr.couleurLigneTableau {
 	cursor:pointer;
@@ -140,4 +144,10 @@ input[type="submit"] {
     background-color: #5CB85C;
     border: none;
     color: white;
+}
+input.inputModif {
+    background-color: #F0AD4E;
+}
+input.inputModif:hover {
+	background-color: #ec971f; 
 }

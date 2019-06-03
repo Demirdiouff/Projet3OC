@@ -25,4 +25,11 @@ p.affichageDate {
 }
 p.affichageNomSurPageRoman {
     color: #777;
+    text-align: center;
+}
+p {
+    text-align: justify;
+}
+.connexion {
+	text-align: center;
 }
