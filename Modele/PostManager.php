@@ -73,10 +73,11 @@ class PostManager extends Modele {
         // Assignation des valeurs à la requête
         // Exécution de la requête
         $bdd = $this->getBdd();
-        $update = $bdd->prepare('UPDATE posts SET date_post = :date_post, titre_post = :titre_post, contenu_post = :contenu_post WHERE id_post = :id_post');
-        $update->bindValue(':date_post', $post->datePost());
+        $update = $bdd->prepare('UPDATE posts SET auteur_post = :auteur_post, titre_post = :titre_post, contenu_post = :contenu_post WHERE id_post = :id_post');
+        $update->bindValue(':auteur_post', $post->auteurPost());
         $update->bindValue(':titre_post', $post->titrePost());
         $update->bindValue(':contenu_post', $post->contenuPost());
+        $update->bindValue(':id_post', $post->id());
         $update->execute();
     }
     
