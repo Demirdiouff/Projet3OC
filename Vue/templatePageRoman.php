@@ -60,12 +60,12 @@
       <footer class="footer">
       <?php if (isset($_SESSION['nomUtilisateur'])) {
                 echo "<p class='affichageNomSurPageRoman'>Salutations " . $_SESSION['nomUtilisateur'] . "</p>"; ?>
-                <p><a href="index.php?action=deconnexion">Déconnexion</a></p>
+                <p class="affichageNomSurPageRoman"><a href="index.php?action=deconnexion">Déconnexion</a></p>
                 <?php if (isset($_SESSION['isAdmin'])) { ?>
                 	  <p><a href="index.php?action=espaceAdmin">Espace d'administration</a></p>
                 	  <?php } ?>
             <?php } else { ?>
-                 <p><a href="index.php?action=pageConnexion">Connexion</a></p>
+                 <p class="connexion"><a href="index.php?action=pageConnexion">Connexion</a></p>
             <?php } ?>
       </footer> <!-- /container -->
 

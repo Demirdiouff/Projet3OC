@@ -37,10 +37,10 @@
 		<div class="header clearfix">
 			<nav>
 				<ul class="nav nav-pills pull-right">
-					<li role="presentation"><a href="index.php">Accueil</a></li>
+					<li role="presentation" class="active"><a href="index.php">Accueil</a></li>
 					<li role="presentation"><a href="index.php?action=pagePropos">A Propos</a></li>
 					<li role="presentation"><a href="index.php?action=pageRoman">Roman</a></li>
-					<li role="presentation" class="active"><a href="index.php?action=pageContact">Contact</a></li>
+					<li role="presentation"><a href="index.php?action=pageContact">Contact</a></li>
 				</ul>
 			</nav>
 			<h3 class="text-muted"><a class="titrePage" href="index.php">Un billet pour l'Alaska</a></h3>
