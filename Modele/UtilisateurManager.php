@@ -67,13 +67,8 @@ class UtilisateurManager extends Modele {
             $user = new Utilisateur($fetchUserByLoginPassword);
             if (password_verify($password, $user->motDePasse())) {
                 return $user;
-            } else {
-                throw new Exception("Mot de passe incorrect");
-            }
-        } else {
-            throw new Exception("Identifiant incorrect");
+           }
         }
-       
     }
     
     public function getUserList() {
