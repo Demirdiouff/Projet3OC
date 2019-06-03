@@ -5,15 +5,12 @@
 <body>
 	<div class="container">
 		<form class="form-signin" method="post" action="index.php?action=connexion">
-			<h2 class="form-signin-heading">Veuillez vous connecter pour accéder à l'espace d'administration</h2>
+			<h2 class="form-signin-heading">Utilisez le formulaire ci-dessous pour vous connecter</h2>
 			<label for="inputEmail" class="sr-only">Pseudo</label> 
 			<input type="text" name="nomUtilisateur" id="inputEmail" class="form-control" placeholder="Pseudo" required> 
 				<label for="inputPassword" class="sr-only">Mot de passe</label> 
 			<input type="password" name="motDePasse" id="inputPassword" class="form-control" placeholder="Mot de passe" required>
 			<div class="checkbox">
-				<label>  
-				<input type="checkbox" value="remember-me">Se souvenir de moi
-				</label>
 			</div>
 			<a href="index.php?action=espaceAdmin"><input class="btn btn-lg btn-primary btn-block" type="submit" name="connexion" value="Se connecter" /></a>
 			<!-- <a href="landingAdminPage.php" class="btn btn-lg btn-primary btn-block" type="submit">Se connecter</a> -->
@@ -37,7 +34,7 @@ if (!empty($msgValideConnexion)) {
 	
 	<div class="container">
 		<form class="form-signin" method="post" action="index.php?action=inscription">
-			<h4 class="form-signin-heading">Veuillez vous inscrire avant de pouvoir accéder à l'espace d'administration</h4>
+			<h4 class="form-signin-heading">Utilisez le formulaire ci-dessous pour vous inscrire</h4>
 			<label for="inputEmail" class="sr-only">Pseudo</label> 
 			<input type="text" name="nomUtilisateur" id="inputEmail" class="form-control" placeholder="Pseudo" required> 
 				<label for="inputPassword" class="sr-only">Mot de passe</label> 

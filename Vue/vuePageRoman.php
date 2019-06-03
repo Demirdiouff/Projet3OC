@@ -5,7 +5,7 @@
 <!-- Main jumbotron for a primary marketing message or call to action -->
 <div class="jumbotron">
 	<div class="container">
-		<h1>Bienvenu à toutes et à tous !</h1>
+		<h1>Bienvenue à tous !</h1>
 		<p>Je suis ravi que vous fassiez partie de cette nouvelle aventure en ma compagnie... J'espère pouvoir vous faire voyager, autant que moi je voyage lorsque j'écris ces chapitres.</p>
 		<p>
 			<!-- <a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a> -->
