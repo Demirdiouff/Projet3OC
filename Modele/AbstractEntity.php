@@ -7,6 +7,7 @@ abstract class AbstractEntity
         foreach ($donnees as $cle => $valeur) {
             // On récupère le nom du setter correspondant à l'attribut
             $method = 'set' . implode('', array_map('ucfirst', explode('_', $cle)));
+//             Les deux lignes ci-dessous sont simplement pour le debug, en cas de problème d'hydrate
 //             echo 'method : ' . $method . '<br/>';
 //             echo $method . '<br/>';
             if (method_exists($this, $method)) {
