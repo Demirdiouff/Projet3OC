@@ -35,11 +35,11 @@ class ControleurPageConnexion {
                 ]);
             if (!$user->nomValide()) {
                 $msgErreurInscription = '<p style="color:red;text-align:center;">Erreur : Le nom d\'utilisateur choisi est invalide.</p>';
-                $this->pageConnexion($msgErreurInscription);
+                $this->pageConnexion($msgErreurInscription, '');
                 unset($user);
             } elseif ($this->manager->existeDeja($user->nomUtilisateur())) {
                 $msgErreurInscription = '<p style="color:red;text-align:center;">Erreur : Le nom d\'utilisateur est déjà pris.</p>';
-                $this->pageConnexion($msgErreurInscription);
+                $this->pageConnexion($msgErreurInscription, '');
                 unset($user);
             } else {
                 $this->manager->add($user);
@@ -51,25 +51,24 @@ class ControleurPageConnexion {
     }
 
     public function connexion() {
+        $msgErreurConnexion = '';
         if (isset($_POST['connexion']) && ($_POST['nomUtilisateur']) && ($_POST['motDePasse'])) {
             $user = $this->manager->getUserByLoginPassword($_POST['nomUtilisateur'], $_POST['motDePasse']);
-//             $user = new Utilisateur([
-//                 'nomUtilisateur' => $_POST['nomUtilisateur'],
-//                 'motDePasse' => $_POST['motDePasse']
-//             ]);
-            $_SESSION['idUtilisateur'] = $user->id();
-            $_SESSION['nomUtilisateur'] = $user->nomUtilisateur();
-            if ($user->isAdmin() == 1) {
-                $_SESSION['isAdmin'] = $user->isAdmin();
-                header("Location: index.php?action=espaceAdmin");
-                exit();
+            if ($user == false) {
+                $msgErreurConnexion = '<p style="color:red">Erreur : Identifiant ou mot de passe faux</p>';
+                $this->pageConnexion('', '', $msgErreurConnexion, '');
             } else {
-                header("Location: index.php?action=pageRoman");
-                exit();
+                $_SESSION['idUtilisateur'] = $user->id();
+                $_SESSION['nomUtilisateur'] = $user->nomUtilisateur();
+                if ($user->isAdmin() == 1) {
+                    $_SESSION['isAdmin'] = $user->isAdmin();
+                    header("Location: index.php?action=espaceAdmin");
+                    exit();
+                } else {
+                    header("Location: index.php?action=pageRoman");
+                    exit();
+                }
             }
-        } else {
-            $msgErreurConnexion = '<p style="color:red">Impossible de se connecter, mot de passe ou identifiant incorrect.</p>';
-            $this->pageConnexion($msgErreurConnexion);
         }
     }
 }
