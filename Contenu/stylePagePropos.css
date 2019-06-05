@@ -82,7 +82,7 @@ a.btn.btn-lg.btn-success {
   }
   /* Space out the masthead */
   .header {
-    margin-bottom: 30px;
+    margin-bottom: 75px;
   }
   /* Remove the bottom border on the jumbotron for visual effect */
   .jumbotron {
@@ -96,4 +96,17 @@ a.btn.btn-lg.btn-success {
 
 a.titrePage {
     text-decoration: none;
+}
+.navbar-inverse .navbar-brand {
+    color: white !important;
+}
+.navbar-inverse {
+    background-color: #337ab7 !important;
+    border-color: #080808;
+}
+a.couleurMenu {
+    color: white !important;
+}
+a.couleurMenu:hover {
+    color: black !important;
 }

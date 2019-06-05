@@ -123,4 +123,16 @@ input[type=submit]:hover {
 
 a.titrePage {
     text-decoration: none;
+}.navbar-inverse .navbar-brand {
+    color: white !important;
+}
+.navbar-inverse {
+    background-color: #337ab7 !important;
+    border-color: #080808;
+}
+a.couleurMenu {
+    color: white !important;
+}
+a.couleurMenu:hover {
+    color: black !important;
 }
