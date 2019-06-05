@@ -38,17 +38,33 @@
 
 <body>
 
+<nav class="navbar navbar-inverse navbar-fixed-top">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed"
+				data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+				aria-controls="navbar">
+				<span class="sr-only">Toggle navigation</span> <span
+					class="icon-bar"></span> <span class="icon-bar"></span> <span
+					class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="index.php">Un billet pour l'Alaska</a>
+		</div>
+		<div id="navbar" class="navbar-collapse collapse">
+			<ul class="nav navbar-nav navbar-right">
+				<li><a class="couleurMenu" href="index.php?">Accueil</a></li>
+				<li><a class="couleurMenu" href="index.php?action=pagePropos">A Propos</a></li>
+				<li><a class="couleurMenu" href="index.php?action=pageRoman">Roman</a></li>
+				<li><a class="couleurMenu" href="index.php?action=pageContact">Contact</a></li>
+			</ul>
+		</div>
+	</div>
+</nav>
+	
+	<br />
+
 	<div class="container">
 		<div class="header clearfix">
-			<nav>
-				<ul class="nav nav-pills pull-right">
-					<li role="presentation"><a href="index.php">Accueil</a></li>
-					<li role="presentation"><a href="index.php?action=pagePropos">A Propos</a></li>
-					<li role="presentation" class="active"><a href="index.php?action=pageRoman">Roman</a></li>
-					<li role="presentation"><a href="index.php?action=pageContact">Contact</a></li>
-				</ul>
-			</nav>
-			<h3 class="text-muted"><a class="titrePage" href="index.php">Un billet pour l'Alaska</a></h3>
 		</div>
 	</div>
 	<!-- /container -->
@@ -75,13 +91,13 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
-    <script src="../../dist/js/bootstrap.min.js"></script>
+    <script src="Contenu/bootstrap-3.3.7/dist/js/bootstrap.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+    <script src="Contenu/bootstrap-3.3.7/docs/assets/js/ie10-viewport-bug-workaround.js"></script>
 
 
 	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-	<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+	<script src="Contenu/bootstrap-3.3.7/docs/assets/js/ie10-viewport-bug-workaround.js"></script>
 </body>
 </html>
 
