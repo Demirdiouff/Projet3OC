@@ -141,12 +141,10 @@ class ControleurEspaceAdmin {
             exit();
         }
         $posts = $this->postManager->getPosts();
-        $commentaires = $this->commentaireManager->getCommentaires();
         $commentairesSignales = $this->commentaireManager->getTableauCommentairesSignales();
         $vue = new Vue("PageCommentairesSignales", "Page d'Administration - Commentaires Signalés");
         $vue->genererPageEspaceAdmin(array(
             'posts' => $posts,
-            'commentaires' => $commentaires,
             'commentairesSignales' => $commentairesSignales
         ));
     }
@@ -161,8 +159,15 @@ class ControleurEspaceAdmin {
     }
     
     public function supprimerCommentaireSignale() {
-        $com = $this->commentaireManager->getTableauCommentairesSignales();
-        $this->commentaireManager->delete($com);
+        $com = new Commentaire([
+            'idCommentaire' => $_GET['idCommentaire']    
+        ]);
+        $this->commentaireManager->getTableauCommentairesSignales();
+        $supprimeCommentaireSignale = $this->commentaireManager->delete($com);
+        if ($supprimeCommentaireSignale == true) {
+            header('Location: index.php?action=pageCommentairesSignales');
+            exit();
+        }
         $this->pageCommentairesSignales();
     }
 }
