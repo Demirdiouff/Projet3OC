@@ -114,6 +114,18 @@ class CommentaireManager extends Modele {
         return $commentairesSignales;
     }
     
+    public function getTableauCommentaireUniqueSignale($com) {
+        $bdd = $this->getBdd();
+        $getOneCommentaireSignale = $bdd->prepare('SELECT * from commentaires WHERE signalement_commentaire > 0');
+        $getOneCommentaireSignale->execute(array($com));
+        if ($getOneCommentaireSignale->rowCount() > 0) {
+            $fetchOneCommentaireSignale = $getOneCommentaireSignale->fetch();
+            return new Commentaire($fetchOneCommentaireSignale); // Accès à la première ligne de résultat
+        } else {
+            throw new Exception("Aucun commentaire n'a été signalé");
+        }
+    }
+    
     public function reinitialiserSignalementCommentaire($idCommentaire) {
         $bdd = $this->getBdd();
         $reinitialiserSignalementCommentaire = $bdd->prepare('UPDATE commentaires SET signalement_commentaire = 0 WHERE id_commentaire = :id_commentaire');
