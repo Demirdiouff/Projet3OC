@@ -36,7 +36,7 @@
 			<form method="post" action="index.php?action=commenter">
 				<fieldset>
 					<label for="nom">Nom <em>*</em></label>
-					<input id="nom" name="auteurCommentaire" type="text" placeholder="<?= $_SESSION['nomUtilisateur'] ?>" required>
+					<input id="nom" name="auteurCommentaire" type="text" placeholder="" value="<?php if (isset($_SESSION['nomUtilisateur'])) { echo $_SESSION['nomUtilisateur']; } ?>" required>
 					<br /> 
 				</fieldset>
 				<fieldset>
@@ -63,5 +63,5 @@
 <!-- /.container -->
 
 <?php } else {
-            echo 'Veuillez vous ' . '<a href="index.php?action=afficherPageConnexion">connecter</a>' . ' pour poster un commentaire';
+            echo 'Veuillez vous ' . '<a href="index.php?action=PageConnexion">connecter</a>' . ' pour poster un commentaire';
 }?> 
