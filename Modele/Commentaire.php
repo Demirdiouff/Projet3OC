@@ -11,7 +11,7 @@ class Commentaire extends AbstractEntity {
     private $signalement_commentaire;
     private $id_post;
     
-    public function __construct(array $donnees) {
+    public function __construct($donnees) {
         $this->hydrate($donnees);
     }
     
