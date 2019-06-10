@@ -19,7 +19,7 @@ class ControleurPageChapitre {
     }
     
     // Affiche les chapitres du roman
-    public function post($msgErreur = '') {
+    public function post() {
        if (isset($_REQUEST['idPost'])) {
             $idPost = $_REQUEST['idPost'];
             $titrePost = $_REQUEST['titrePost'];
@@ -34,7 +34,7 @@ class ControleurPageChapitre {
     }
     
     // Permet l'ajout d'un commentaire sous un roman
-    public function commenter($msgErreur = '', $msgValide = '') {
+    public function commenter() {
         if (isset($_POST['commenter']) && ($_POST['auteurCommentaire']) && ($_POST['contenuCommentaire']) && ($_POST['idPost'])) {
             $com = new Commentaire([
                'auteurCommentaire' => $_POST['auteurCommentaire'],
@@ -43,11 +43,11 @@ class ControleurPageChapitre {
             ]);
             if (!$com->auteurValide()) {
                 $msgErreur = '<p style="color:red">Erreur : Le nom de l\'auteur ne peut être vide</p>';
-                $this->post($msgErreur);
+                $this->post();
                 unset($com);
             } else {
                 $this->commentaireManager->add($com);
-                $this->post($msgErreur);
+                $this->post();
             }
         }
     }
