@@ -14,12 +14,18 @@ class ControleurEspaceAdmin {
         $this->commentaireManager = new CommentaireManager();
     }
     
-    // Affiche la liste de tous les billets du blog
-    public function espaceAdmin($msgValideModifChapitre = '') {
+    public function connexionAdmin() {
         if (!isset($_SESSION['isAdmin'])) {
             header("Location: index.php?");
             exit();
         }
+    }
+    
+    // Affiche la liste de tous les billets du blog
+    public function espaceAdmin($msgValideModifChapitre = '') {
+        // On vérifie si un utilisateur Admin est connecté ou non
+        $this->connexionAdmin();
+        
         $posts = $this->postManager->getPosts();
         $tableauNbCommentaire = $this->commentaireManager->getTableauNombreCommentaires();
         $vue = new Vue("EspaceAdmin", "Page d'Administration - Accueil");
@@ -31,15 +37,17 @@ class ControleurEspaceAdmin {
     }
     
     public function pageAjoutChapitre($msgErreurAjouterChapitre = '', $msgValideAjouterChapitre = '') {
-        if (!isset($_SESSION['isAdmin'])) {
-            header("Location: index.php?");
-            exit();
-        }
+        // On vérifie si un utilisateur Admin est connecté ou non
+        $this->connexionAdmin();
+        
         $vue = new Vue("PageAjoutChapitre", "Page d'Administration - Ajouter un Chapitre");
         $vue->genererPageEspaceAdmin(array('msgErreurAjouterChapitre' => $msgErreurAjouterChapitre, 'msgValideAjouterChapitre' => $msgValideAjouterChapitre));
     }
     
     public function ajouterChapitre() {
+        // On vérifie si un utilisateur Admin est connecté ou non
+        $this->connexionAdmin();
+        
         $msgErreurAjouterChapitre = '';
         $msgValideAjouterChapitre = '';
         if (isset($_POST['ajouterChapitre']) && isset($_POST['auteurPost']) && isset($_POST['titrePost']) && isset($_POST['contenuPost'])) {
@@ -68,10 +76,9 @@ class ControleurEspaceAdmin {
     }
     
     public function pageModifierChapitre($msgErreurModifChapitre = '') {
-        if (!isset($_SESSION['isAdmin'])) {
-            header("Location:index.php?");
-            exit();
-        }
+        // On vérifie si un utilisateur Admin est connecté ou non
+        $this->connexionAdmin();
+        
         if (isset($_REQUEST['idPost'])) {
             $idPost = $_REQUEST['idPost'];
         }
@@ -84,6 +91,9 @@ class ControleurEspaceAdmin {
     }
     
     public function modifierChapitre() {
+        // On vérifie si un utilisateur Admin est connecté ou non
+        $this->connexionAdmin();
+        
         $msgErreurModifChapitre = '';
         $msgValideModifChapitre = '';
         if (isset($_POST['modifierChapitre'], $_POST['auteurPost'], $_POST['titrePost'], $_POST['contenuPost'], $_GET['idPost'])){
@@ -113,10 +123,9 @@ class ControleurEspaceAdmin {
     }
     
     public function pageSupprimerChapitre() {
-        if (!isset($_SESSION['isAdmin'])) {
-            header("Location:index.php?");
-            exit();
-        }
+        // On vérifie si un utilisateur Admin est connecté ou non
+        $this->connexionAdmin();
+        
         $posts = $this->postManager->getPosts();
         $tableauNbCommentaire = $this->commentaireManager->getTableauNombreCommentaires();
         $vue = new Vue("PageSupprimerChapitre", "Page d'Administration - Supprimer un Chapitre");
@@ -127,6 +136,9 @@ class ControleurEspaceAdmin {
     }
     
     public function supprimerChapitre() {
+        // On vérifie si un utilisateur Admin est connecté ou non
+        $this->connexionAdmin();
+        
         if (isset($_REQUEST['idPost'])) {
             $idPost = $_REQUEST['idPost'];
         }
@@ -136,10 +148,9 @@ class ControleurEspaceAdmin {
     }
     
     public function pageCommentairesSignales() {
-        if (!isset($_SESSION['isAdmin'])) {
-            header("Location:index.php?");
-            exit();
-        }
+        // On vérifie si un utilisateur Admin est connecté ou non
+        $this->connexionAdmin();
+        
         $posts = $this->postManager->getPosts();
         $commentairesSignales = $this->commentaireManager->getTableauCommentairesSignales();
         $vue = new Vue("PageCommentairesSignales", "Page d'Administration - Commentaires Signalés");
@@ -150,6 +161,9 @@ class ControleurEspaceAdmin {
     }
     
     public function autoriserCommentaireSignale() {
+        // On vérifie si un utilisateur Admin est connecté ou non
+        $this->connexionAdmin();
+        
         if (isset($_REQUEST['idCommentaire'])) {
             $idCommentaire = $_REQUEST['idCommentaire'];
         }
@@ -159,6 +173,9 @@ class ControleurEspaceAdmin {
     }
     
     public function supprimerCommentaireSignale() {
+        // On vérifie si un utilisateur Admin est connecté ou non
+        $this->connexionAdmin();
+        
         $com = new Commentaire([
             'idCommentaire' => $_GET['idCommentaire']    
         ]);
